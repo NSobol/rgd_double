@@ -1,0 +1,7 @@
+.review-container{
+	display: flex;
+}
+.review-avatar {
+  width: 200px;
+  height: 201px;
+}

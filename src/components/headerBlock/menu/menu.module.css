@@ -1,0 +1,25 @@
+.menu-container {
+  height: 94px;
+  flex-shrink: 0;
+  background: #292929;
+}
+
+.menu {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+.menu-list {
+  display: flex;
+  padding: 26px 0 25px 0;
+  width: 828px;
+  justify-content: space-between;
+}
+
+.menu-list-item-link {
+  color: #fff;
+  font-size: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}

@@ -1,0 +1,15 @@
+.content {
+  height: 1080px;
+  background-color: #e5e5e5;
+}
+
+.container {
+  max-width: 1480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.fulOrder {
+  position: absolute;
+  top: -220px;
+}

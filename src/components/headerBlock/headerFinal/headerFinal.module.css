@@ -1,0 +1,23 @@
+.header {
+  height: 834px;
+  width: 100%;
+  background-image: url('./../../../images/headerImage3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 15px;
+}
+
+.header-title-container {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.header-title {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 351px;
+}

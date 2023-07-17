@@ -1,0 +1,106 @@
+.formContainer {
+  background: rgba(41, 41, 41, 0.69);
+  width: 1490px;
+  height: 285px;
+  margin-top: 111px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form {
+  padding: 28px 42px 37px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.form-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-group {
+  margin-bottom: 48px;
+}
+
+.form-group p {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 325px;
+  height: 60px;
+  border-radius: 3px;
+  background: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 21px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  outline: none;
+}
+
+.form-group-icon {
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+.form-group-input {
+  color: #e5e5e5;
+  text-transform: capitalize;
+}
+
+.form-group-input-date {
+  color: #e5e5e5;
+  background-color: #fff;
+  text-transform: uppercase;
+}
+
+.form-group-inputs-date {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.form-button {
+  width: 323px;
+  height: 60px;
+  border-radius: 5px;
+  background: transparent;
+  color: #ffa800;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  border-color: #ffa800;
+  margin-left: auto;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+input[type='date'] {
+  background: url('./../../images/calendar.svg') #fff no-repeat 98% 50%;
+}
+
+input[type='date']::-webkit-calendar-picker-selected {
+color: red;
+}
+
+
+
+/* .react-datepicker__day--selected */

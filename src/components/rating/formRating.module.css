@@ -1,0 +1,23 @@
+.stars {
+  display: 'flex';
+}
+
+.star {
+  margin-right: 10;
+  cursor: 'pointer';
+  width: 30px;
+  height: 30px;
+  stroke-width: 2px;
+  stroke: #fff;
+  fill: transparent;
+}
+
+.filled {
+  margin-right: 10;
+  cursor: 'pointer';
+  width: 30px;
+  height: 30px;
+  stroke: #fff;
+  fill: #fff;
+  fill-opacity: 1;
+}

@@ -1,0 +1,91 @@
+.formContainer {
+  background: rgba(41, 41, 41, 0.8);
+  width: 729px;
+  height: 574px;
+  margin-top: 253px;
+  margin-left: 104px;
+}
+
+.form {
+  padding: 79px 24px 60px 21px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.form-group {
+  margin-bottom: 60px;
+}
+
+.form-group p {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 325px;
+  height: 60px;
+  border-radius: 3px;
+  background: #fff;
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 21px;
+  padding-top: 19px;
+  padding-bottom: 11px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.form-group-icon {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.form-group-input {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.form-group-inputs-date {
+  display: flex;
+  justify-content: space-between;
+}
+.form-button {
+  width: 323px;
+  height: 60px;
+  border-radius: 5px;
+  background: #ffa800;
+  color: #292929;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  border-color: #ffa800;
+  margin-top: 32px;
+  margin-left: auto;
+}
+input[type=date]::-webkit-calendar-picker-indicator{
+  width: 30px;
+  height: 30px;
+	opacity: 0;
+}
+input[type=date]{
+	background:url("./../../images/calendar.svg") #fff no-repeat 98% 50%;
+}

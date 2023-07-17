@@ -1,0 +1,26 @@
+.search-container {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: flex;
+}
+.search-container-block {
+  width: 506px;
+  height: 170px;
+  margin-top: 415px;
+  margin-left: 90px;
+}
+.search-container-text {
+  color: #fff;
+  font-family: RobotoThin;
+  font-size: 72px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.search-container-text1 {
+  color: #fff;
+  font-family: RobotoBold;
+  font-size: 72px;
+  font-style: normal;
+  line-height: normal;
+}
