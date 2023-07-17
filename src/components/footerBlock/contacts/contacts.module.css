@@ -85,13 +85,13 @@
   display: flex;
 }
 
-.contacts-subscribe > input {
+.contacts-subscribe-input {
   width: 447px;
   height: 60px;
   border-radius: 3px;
   background: #fff;
   padding: 17px 35px 17px 21px;
-  color: #e5e5e5;
+  color: #000;
   font-family: Roboto;
   font-size: 24px;
   font-style: normal;
@@ -99,6 +99,10 @@
   line-height: normal;
   outline: none;
 }
+
+.contacts-subscribe-input::placeholder {
+  color: #e5e5e5;
+} 
 
 .contacts-subscribe > button {
   width: 169px;

@@ -63,6 +63,7 @@ export const Contacts = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <input
+              className={s['contacts-subscribe-input']}
               type='email'
               placeholder='email'
               name='email'
