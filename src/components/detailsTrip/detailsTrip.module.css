@@ -1,0 +1,17 @@
+.details {
+  width: 360px;
+  height: 1279px;
+  background: #3e3c41;
+}
+
+.details-title {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 35px;
+}
