@@ -58,9 +58,7 @@ class Api {
 
   //Подписка на почтовые уведомления
   getSubscribe(data) {
-    console.log(data);
     const url = `${this.baseUrl}/subscribe?email=${data}`;
-    console.log(url);
     return fetch(url, {
       method: 'POST',
       headers: this.headers,

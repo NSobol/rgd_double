@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Phone from './../../../images/phone.svg';
 import Mail from './../../../images/email.svg';
 import Skype from './../../../images/skype.svg';
@@ -11,18 +11,20 @@ import { ReactComponent as Twitter } from './../../../images/twitter.svg';
 import s from './contacts.module.css';
 import { useForm } from 'react-hook-form';
 import { api } from '../../../utils/api';
+import { Modal } from '../../modals/modal/modal';
 
 export const Contacts = () => {
-  const { register, handleSubmit } = useForm();
+  const [active, setActive] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data.email);
     try {
-      const res = await api.getSubscribe(data.email);
-      console.log(res);
-      // alert("Вы успешно подписаны");
+      await api.getSubscribe(data.email);
+      setActive(true);
+      reset();
     } catch (error) {
       console.log(error);
+      reset();
     }
   };
   return (
@@ -116,6 +118,13 @@ export const Contacts = () => {
           </ul>
         </div>
       </div>
+      {active && (
+        <Modal
+          active={active}
+          setActive={setActive}
+          messages={'Вы успешно подписаны'}
+        />
+      )}
     </section>
   );
 };
