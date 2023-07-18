@@ -6,6 +6,9 @@ import { LoadingSearchPage } from './pages/loadingSearchPage/LoadingSearchPage';
 import { SuccessfulOrderPage } from './pages/successfulOrderPage/SuccessfulOrderPage';
 import { PaymentPage } from './pages/paymentPage/PaymentPage';
 import { OrderConfirmationPage } from './pages/orderConfirmationPage/OrderConfirmationPage';
+import { ListTrainsPage } from './pages/listTrainsPage/ListTrainsPage';
+import { TicketsPage } from './pages/ticketsPage/TicketsPage';
+import { PassengersPage } from './pages/passengersPage/PassengersPage';
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/loading' element={<LoadingSearchPage />} />
+        <Route path='/stepone' element={<ListTrainsPage />} />
+        <Route path='/steptwo' element={<TicketsPage />} />
+        <Route path='/stepthree' element={<PassengersPage />} />
         <Route path='/fulorder' element={<SuccessfulOrderPage />} />
         <Route path='/payment' element={<PaymentPage />} />
         <Route path='/confirm' element={<OrderConfirmationPage />} />
