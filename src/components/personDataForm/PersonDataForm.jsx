@@ -1,15 +1,15 @@
 import React from 'react';
 import s from './person.module.css';
 import { useForm } from 'react-hook-form';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const PersonDataForm = () => {
   const { register, handleSubmit } = useForm();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
-    // navigate('/loading');
+    navigate('/confirm');
   };
   return (
     <section className={s.person}>
