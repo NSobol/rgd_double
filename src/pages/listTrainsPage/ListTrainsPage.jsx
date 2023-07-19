@@ -1,17 +1,20 @@
 import React from 'react';
-import { TrainsList } from '../../components/trainsList/TrainsList';
 import { Header } from '../../components/headerBlock/header/Header';
 import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
-import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
+import { Trains } from '../../components/trains/Trains';
+// import { useSelector } from 'react-redux';
 
-export const ListTrainsPage = (data) => {
+export const ListTrainsPage = () => {
+  // const data = data.items;
+  // const { search } = useSelector((s) => s.search);
+  // const { trains } = useSelector((s) => s.trains);
+  // console.log(search);
+  // console.log(trains);
+ 
   return (
     <div>
       <Header />
-      <div className='content'>
-        <DetailsTrip />
-        <TrainsList data={data} />
-      </div>
+      <Trains />
       <FooterContainer />
     </div>
   );

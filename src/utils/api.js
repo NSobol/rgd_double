@@ -26,7 +26,7 @@ class Api {
   //*Поиск направлений
   getAllRoutes(data) {
      console.log(data);
-    const url = `${this.baseUrl}/routes?from_city_id=${data['from_city_id']}&from_city_id=${data['to_city_id']}&date_start=${data['date_start']}`;
+    const url = `${this.baseUrl}/routes?from_city_id=${data['from_city_id']}&to_city_id=${data['to_city_id']}&date_start=${data['date_start']}`;
     console.log(url)
     return fetch(url, {
       method: 'GET',
