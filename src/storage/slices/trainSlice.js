@@ -29,7 +29,12 @@ export const getTrains = createAsyncThunk(
 const trains = createSlice({
   name: 'trains',
   initialState,
-  reducers: {},
+  reducers: {
+    setCity(state, action) {
+      state.search[`${action.payload.name}_id`] = action.payload.city._id;
+      state.search[`${action.payload.name}_name`] = action.payload.city.name;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getTrains.fulfilled, (state, action) => {
       state.trains = action.payload.items ?? [];
@@ -46,4 +51,5 @@ const trains = createSlice({
   },
 });
 
+export const { setCity } = trains.actions;
 export default trains.reducer;

@@ -16,8 +16,8 @@ class Api {
   }
 
   //*для поиска городов
-  getAllСities() {
-    return fetch(`${this.baseUrl}/routes/cities`, {
+  searchCities(city) {
+    return fetch(`${this.baseUrl}/routes/cities?name=${city}`, {
       method: 'GET',
       headers: this.headers,
     }).then(resp);
