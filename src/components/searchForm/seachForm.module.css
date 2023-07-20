@@ -17,6 +17,10 @@
   margin-bottom: 60px;
 }
 
+.form-group-inputs{
+  display: flex;
+}
+
 .form-group p {
   color: #fff;
   font-family: Roboto;
@@ -27,12 +31,17 @@
   margin-bottom: 15px;
 }
 
-.form-group input {
+.form-group-icon {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.form-group-input {
   width: 325px;
   height: 60px;
   border-radius: 3px;
   background: #fff;
-  color: #e5e5e5;
+  color: #292929;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;
@@ -45,19 +54,8 @@
   outline: none;
 }
 
-.form-group-icon {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-
-.form-group-input {
+.form-group-input::placeholder{
   color: #e5e5e5;
-  font-family: Roboto;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: capitalize;
 }
 
 .form-group-inputs-date {
