@@ -24,11 +24,8 @@ class Api {
   }
 
   //*Поиск направлений
-  getAllRoutes(data) {
-     console.log(data);
-    const url = `${this.baseUrl}/routes?from_city_id=${data['from_city_id']}&to_city_id=${data['to_city_id']}&date_start=${data['date_start']}`;
-    console.log(url)
-    return fetch(url, {
+  getAllRoutes(params) {
+    return fetch(`${this.baseUrl}/routes?${params}`, {
       method: 'GET',
       headers: this.headers,
     }).then(resp);

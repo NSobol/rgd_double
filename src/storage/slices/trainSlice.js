@@ -8,17 +8,20 @@ const initialState = {
   loading: false,
   total: 0,
   currentTrain: {},
-  search: {},
+  searchParams: {},
 };
 
 // actions ----------------------------------------------------
 export const getTrains = createAsyncThunk(
   'trains',
-  async function (url, { fulfillWithValue, getState, rejectWithValue }) {
+  async function (data, { getState, fulfillWithValue, rejectWithValue }) {
+    const {trains} = getState();
+    let stringParams = '';
+    for (let key in trains.searchParams) {
+      stringParams += key + '=' + trains.searchParams[key] + '&';
+    }
     try {
-      const data = await api.getAllRoutes(url);
-      console.log(data);
-      getState();
+      const data = await api.getAllRoutes(stringParams);
       return fulfillWithValue({ ...data });
     } catch (error) {
       return rejectWithValue(error);
@@ -31,8 +34,11 @@ const trains = createSlice({
   initialState,
   reducers: {
     setCity(state, action) {
-      state.search[`${action.payload.name}_id`] = action.payload.city._id;
-      state.search[`${action.payload.name}_name`] = action.payload.city.name;
+      state.searchParams[`${action.payload.name}_id`] = action.payload.city._id;
+      state.searchParams[`${action.payload.name}_name`] = action.payload.city.name;
+    },
+    setDate(state, action) {
+      state.searchParams[action.payload.name] = action.payload.value;
     },
   },
   extraReducers: (builder) => {
@@ -51,5 +57,5 @@ const trains = createSlice({
   },
 });
 
-export const { setCity } = trains.actions;
+export const { setCity, setDate } = trains.actions;
 export default trains.reducer;
