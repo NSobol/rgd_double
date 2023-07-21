@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSeats, setFilter } from '../../storage/slices/trainSlice';
 import { RouteDetails } from '../../components/routeDetails/routeDetails';
+import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
 
 export const TicketsPage = () => {
   const { currentRoute } = useSelector((s) => s.trains);
@@ -22,6 +23,7 @@ export const TicketsPage = () => {
       <button onClick={getS}>getSeats</button>
       <button onClick={() => handleFilter('have_first_class')}>have_first_class</button>
       <RouteDetails direction={'to'} routeInfo={currentRoute} />
+      <TicketsQuantity />
     </div>
   );
 };
