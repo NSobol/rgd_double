@@ -40,8 +40,8 @@ class Api {
   }
 
   //Информация о посадочных местах определённого направления
-  getRouteSeats() {
-    return fetch(`${this.baseUrl}/routes/{id}/seats`, {
+  getRouteSeats(id, filters = '') {
+    return fetch(`${this.baseUrl}/routes/${id}/seats${filters}`, {
       method: 'GET',
       headers: this.headers,
     }).then(resp);
