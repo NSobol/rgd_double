@@ -40,8 +40,6 @@ export const SearchForm = () => {
           найти билеты
         </button>
       </form>
-      {/* DEV для быстрого перехода на нужную страницу */}
-      <button onClick={() => navigate('/steptwo')}>stepTwo</button>
     </div>
   );
 };
