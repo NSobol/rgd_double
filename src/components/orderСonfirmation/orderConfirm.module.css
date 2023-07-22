@@ -1,0 +1,14 @@
+.confirm {
+  width: 100%;
+  background: #f7f5f9;
+}
+
+.confirm-content {
+  display: flex;
+  max-width: 1410px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 96px;
+}

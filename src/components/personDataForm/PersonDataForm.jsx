@@ -8,7 +8,6 @@ export const PersonDataForm = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
     navigate('/confirm');
   };
   return (

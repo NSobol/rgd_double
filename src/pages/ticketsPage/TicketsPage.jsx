@@ -9,8 +9,14 @@ import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
 import s from './tickets.module.css';
 import { Crumbs } from '../../components/crumbs/Crumbs';
 import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelect';
+import { useNavigate } from 'react-router';
 
 export const TicketsPage = () => {
+   const navigate = useNavigate();
+
+  const getTransition = () => {
+    navigate('/stepthree');
+  };
   const { currentRoute, departureCoach } = useSelector((s) => s.trains);
   console.log('currentRoute', currentRoute);
   console.log('departureCoach', departureCoach);
@@ -28,8 +34,8 @@ export const TicketsPage = () => {
   return (
     <div>
       <Header />
+      <Crumbs progress={2} />
       <div className={s.container}>
-        <Crumbs progress={2}/>
         <DetailsTrip />
         <div className={s.ticketsBlock}>
           <button onClick={getS}>getSeats</button>
@@ -38,7 +44,11 @@ export const TicketsPage = () => {
           </button>
           <RouteDetails direction={'to'} routeInfo={currentRoute.departure} />
           <TicketsQuantity />
-          <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
+          <CoachTypeSelect
+            routeInfo={currentRoute.departure}
+            direction={'departure'}
+          />
+          <button onClick={getTransition}>Далее</button>
         </div>
       </div>
       <FooterContainer />
