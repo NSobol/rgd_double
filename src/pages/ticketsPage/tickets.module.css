@@ -1,0 +1,10 @@
+.container {
+  max-width: 1480px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticketsBlock {
+  width: 959px;
+}

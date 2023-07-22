@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSeats, setFilter } from '../../storage/slices/trainSlice';
 import { RouteDetails } from '../../components/routeDetails/routeDetails';
 import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
+import { Header } from '../../components/headerBlock/header/Header';
+import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
+import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
+import s from './tickets.module.css';
 
 export const TicketsPage = () => {
   const { currentRoute } = useSelector((s) => s.trains);
@@ -19,11 +23,19 @@ export const TicketsPage = () => {
 
   return (
     <div>
-      TicketsPage
-      <button onClick={getS}>getSeats</button>
-      <button onClick={() => handleFilter('have_first_class')}>have_first_class</button>
-      <RouteDetails direction={'to'} routeInfo={currentRoute} />
-      <TicketsQuantity />
+      <Header />
+      <div className={s.container}>
+        <DetailsTrip />
+        <div className={s.ticketsBlock}>
+          <button onClick={getS}>getSeats</button>
+          <button onClick={() => handleFilter('have_first_class')}>
+            have_first_class
+          </button>
+          <RouteDetails direction={'to'} routeInfo={currentRoute} />
+          <TicketsQuantity />
+        </div>
+      </div>
+      <FooterContainer />
     </div>
   );
 };
