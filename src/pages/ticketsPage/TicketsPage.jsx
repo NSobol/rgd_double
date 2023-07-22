@@ -7,6 +7,7 @@ import { Header } from '../../components/headerBlock/header/Header';
 import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
 import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
 import s from './tickets.module.css';
+import { Crumbs } from '../../components/crumbs/Crumbs';
 
 export const TicketsPage = () => {
   const { currentRoute } = useSelector((s) => s.trains);
@@ -25,6 +26,7 @@ export const TicketsPage = () => {
     <div>
       <Header />
       <div className={s.container}>
+        <Crumbs progress={2}/>
         <DetailsTrip />
         <div className={s.ticketsBlock}>
           <button onClick={getS}>getSeats</button>

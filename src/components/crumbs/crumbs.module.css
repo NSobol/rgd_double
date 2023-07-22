@@ -1,0 +1,127 @@
+.container-crumbs {
+  display: flex;
+  width: 100%;
+  margin-bottom: 96px;
+}
+
+.block {
+  width: 1480px;
+  display: flex;
+  flex-shrink: 0;
+}
+.crumb-item {
+  height: 98px;
+  background-color: #3e3c41;
+  width: 100%;
+  position: relative;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crumb-item::before {
+  content: '';
+  display: block;
+  width: 69px;
+  height: 68px;
+  background-color: #3e3c41;
+  transform: rotate(45deg);
+  border-bottom: 1px solid #3e3c41;
+  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #3e3c41;
+  border-top: 1px solid #e5e5e5;
+  position: absolute;
+  top: 14px;
+  left: 337px;
+  z-index: 5;
+}
+
+.crumb-item-yellow {
+  height: 98px;
+  background-color: #ffa800;
+  width: 100%;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crumb-item-grey {
+  height: 98px;
+  background-color: #3e3c41;
+  width: 100%;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crumb-item-active {
+  height: 98px;
+  background-color: #ffa800;
+  width: 100%;
+  position: relative;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crumb-item-active::before {
+  content: '';
+  display: block;
+  width: 69px;
+  height: 68px;
+  background-color: #ffa800;
+  transform: rotate(45deg);
+  border-bottom: 1px solid #ffa800;
+  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #ffa800;
+  border-top: 1px solid #e5e5e5;
+  position: absolute;
+  top: 14px;
+  left: 337px;
+  z-index: 5;
+}
+
+.crumb-item > span,
+.crumb-item-yellow > span, .crumb-item-grey > span,
+.crumb-item-active > span {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 4px;
+  margin-right: 24px;
+}
