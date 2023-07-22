@@ -1,0 +1,55 @@
+.routeDetails {
+  display: flex;
+  padding: 30px;
+  background-color: #f7f6f6;
+  justify-content: space-between;
+}
+
+.routeDetails__container_horisontal {
+  display: flex;
+  gap: 30px;
+}
+
+.routeDetails__container_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.time {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cityName {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.stationName {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.trainName {
+  color: #3e3c41;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.travelTime {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+}
