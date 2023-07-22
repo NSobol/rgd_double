@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import s from './cityInput.module.css';
 import { api } from '../../utils/api';
 import { useDispatch } from 'react-redux';
@@ -9,11 +9,14 @@ export const CityInput = ({ placeholder, name }) => {
   const [cityName, setCityName] = useState('');
   const [cities, setCities] = useState([]);
 
-  const selectCity = (city) => {
-    setCityName(city.name);
-    setCities([]);
-    dispatch(setCity({city, name}))
-  };
+  const selectCity = useCallback(
+    (city) => {
+      setCityName(city.name);
+      setCities([]);
+      dispatch(setCity({ city, name }));
+    },
+    [dispatch, name]
+  ); ;
 
   useEffect(() => {
     if (cityName === '') {
@@ -22,7 +25,7 @@ export const CityInput = ({ placeholder, name }) => {
     }
     const timer = setTimeout(() => {
       api.searchCities(cityName).then((res) => {
-        const requestedCity = res.find((city) => city.name === cityName)
+        const requestedCity = res.find((city) => city.name === cityName);
         if (requestedCity) {
           selectCity(requestedCity);
         } else {
@@ -31,7 +34,7 @@ export const CityInput = ({ placeholder, name }) => {
       });
     }, 500);
     return () => clearTimeout(timer);
-  }, [cityName]);
+  }, [cityName, selectCity]);
 
   return (
     <div className={s['cityInput-container']}>
