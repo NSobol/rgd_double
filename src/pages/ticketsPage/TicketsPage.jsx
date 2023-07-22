@@ -1,19 +1,22 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSeats, setFilter } from '../../storage/slices/trainSlice';
+import { getCoach, setFilter } from '../../storage/slices/trainSlice';
 import { RouteDetails } from '../../components/routeDetails/routeDetails';
 import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
 import { Header } from '../../components/headerBlock/header/Header';
 import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
 import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
 import s from './tickets.module.css';
+import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelect';
 
 export const TicketsPage = () => {
-  const { currentRoute } = useSelector((s) => s.trains);
+  const { currentRoute, departureCoach } = useSelector((s) => s.trains);
+  console.log('currentRoute', currentRoute);
+  console.log('departureCoach', departureCoach);
   const dispatch = useDispatch();
   // DEV тест запроса мест
   const getS = () => {
-    dispatch(getSeats('64103b2f5c49ea0046358ef8'));
+    dispatch(getCoach('64103b2f5c49ea0046358ef8'));
   };
 
   // DEV тест переключателя фильтров
@@ -31,8 +34,9 @@ export const TicketsPage = () => {
           <button onClick={() => handleFilter('have_first_class')}>
             have_first_class
           </button>
-          <RouteDetails direction={'to'} routeInfo={currentRoute} />
+          <RouteDetails direction={'to'} routeInfo={currentRoute.departure} />
           <TicketsQuantity />
+          <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
         </div>
       </div>
       <FooterContainer />

@@ -4,3 +4,28 @@
   font-size: 30px;
   font-weight: 700;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ticketSelector {
+  width: 100%;
+  border-radius: 3px;
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.ticketSelector-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 40px;
+}
+
+.ticketSelector-container:hover {
+  outline: 1px solid #ffa800c9;
+}
