@@ -7,75 +7,8 @@ const initialState = {
   trains: [],
   loading: false,
   total: 0,
-  //DEV статичные данные для работы
-  currentRoute: {
-    have_first_class: false,
-    have_second_class: false,
-    have_third_class: false,
-    have_fourth_class: false,
-    have_wifi: false,
-    have_air_conditioning: false,
-    is_express: false,
-    min_price: 2965,
-    available_seats: 66,
-    available_seats_info: {
-        first: 18,
-        third: 48
-    },
-    departure: {
-        _id: "641038ea5c49ea004633be61",
-        have_first_class: true,
-        have_second_class: false,
-        have_third_class: true,
-        have_fourth_class: false,
-        have_wifi: false,
-        have_air_conditioning: true,
-        is_express: false,
-        min_price: 2965,
-        // в секуднах
-        // duration: 216720,
-        duration: 213120,
-        available_seats: 66,
-        available_seats_info: {
-            first: 18,
-            third: 48
-        },
-        train: {
-            _id: "641037f05c49ea004632f875",
-            name: "Тройка - 16"
-        },
-        from: {
-            railway_station_name: "Курский",
-            city: {
-                _id: "641037eb5c49ea004632ee6e",
-                name: "москва"
-            },
-            datetime: 1689913186
-        },
-        to: {
-            railway_station_name: "Адлер",
-            city: {
-                _id: "641037eb5c49ea004632ee72",
-                name: "адлер"
-            },
-            datetime: 1690126306
-        },
-        price_info: {
-            first: {
-                price: 4860,
-                top_price: 3550,
-                bottom_price: 4255
-            },
-            third: {
-                top_price: 4480,
-                bottom_price: 2965,
-                side_price: 4045
-            }
-        }
-    }
-},
+  currentRoute: {},
   searchParams: {},
-  seats: [],
   filters: {
     have_first_class: false,
     have_second_class: false,
@@ -84,13 +17,17 @@ const initialState = {
     have_wifi: false,
     have_air_conditioning: false,
   },
+  departureCoachType: '',
+  departureCoach: [],
+  arrivalCoachType: '',
+  arrivalCoach: [],
 };
 
 // actions ----------------------------------------------------
 export const getTrains = createAsyncThunk(
   'trains',
   async function (data, { getState, fulfillWithValue, rejectWithValue }) {
-    const {trains} = getState();
+    const { trains } = getState();
     let stringParams = '';
     for (let key in trains.searchParams) {
       stringParams += key + '=' + trains.searchParams[key] + '&';
@@ -104,19 +41,19 @@ export const getTrains = createAsyncThunk(
   }
 );
 
-export const getSeats = createAsyncThunk(
-  'seats',
-  async function (routeId, { getState, fulfillWithValue, rejectWithValue }) {
-    const {trains} = getState();
+export const getCoach = createAsyncThunk(
+  'trainSlice/getCoach',
+  async function ({ direction, routeId }, { getState, fulfillWithValue, rejectWithValue }) {
+    const { trains } = getState();
     let stringFilters = '?';
     for (let key in trains.filters) {
-      if(trains.filters[key]) {
+      if (trains.filters[key]) {
         stringFilters += key + '=' + trains.filters[key] + '&';
       }
     }
     try {
       const data = await api.getRouteSeats(routeId, stringFilters);
-      return fulfillWithValue({ ...data });
+      return fulfillWithValue({ data, direction });
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -137,6 +74,12 @@ const trains = createSlice({
     setFilter(state, action) {
       state.filters[action.payload] = !state.filters[action.filter];
     },
+    selectRoute(state, action) {
+      state.currentRoute = action.payload;
+    },
+    setCoachType(state, action) {
+      state[`${action.payload.direction}CoachType`] = action.payload.type;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getTrains.fulfilled, (state, action) => {
@@ -144,8 +87,8 @@ const trains = createSlice({
       state.total = action.payload.total;
     });
 
-    builder.addCase(getSeats.fulfilled, (state, action) => {
-      state.seats = action.payload.items ?? [];
+    builder.addCase(getCoach.fulfilled, (state, action) => {
+      state[`${action.payload.direction}Coach`] = action.payload.data ?? [];
     });
 
     builder.addMatcher(isError, (state, action) => {
@@ -159,5 +102,5 @@ const trains = createSlice({
   },
 });
 
-export const { setCity, setDate, setFilter } = trains.actions;
+export const { setCity, setDate, setFilter, selectRoute, setCoachType } = trains.actions;
 export default trains.reducer;

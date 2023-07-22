@@ -9,7 +9,7 @@ const duration = require('dayjs/plugin/duration')
 dayjs.extend(duration)
 
 export const RouteDetails = ({direction, routeInfo}) => {
-  const travelTime = dayjs.duration(routeInfo.departure.duration * 1000)
+  const travelTime = dayjs.duration(routeInfo.duration * 1000)
 
   //вытащить в утилки
   const getTime = (dateInMS) => {
@@ -24,23 +24,23 @@ export const RouteDetails = ({direction, routeInfo}) => {
           <Train />
         </div>
         <div className={s['routeDetails__container_vertical']}>
-          <span className={s['trainName']}>{routeInfo.departure.train._id.slice(-4)}</span>
-          <span className={s['cityName']}>{routeInfo.departure.from.city.name}</span>
-          <span className={s['cityName']}>{routeInfo.departure.to.city.name}</span>
+          <span className={s['trainName']}>{routeInfo.train._id.slice(-4)}</span>
+          <span className={s['cityName']}>{routeInfo.from.city.name}</span>
+          <span className={s['cityName']}>{routeInfo.to.city.name}</span>
         </div>
       </div>
       <div className={s['routeDetails__container_vertical']}>
-        <span className={s['time']}>{getTime(routeInfo.departure.from.datetime)}</span>
-        <span className={s['cityName']}>{routeInfo.departure.from.city.name}</span>
-        <span className={s['stationName']}>{routeInfo.departure.from.railway_station_name}</span>
+        <span className={s['time']}>{getTime(routeInfo.from.datetime)}</span>
+        <span className={s['cityName']}>{routeInfo.from.city.name}</span>
+        <span className={s['stationName']}>{routeInfo.from.railway_station_name}</span>
       </div>
       <div className={s['routeDetails__container_vertical']}>
           {direction === 'to' ? <ArrowR /> : <ArrowL />}
       </div>
       <div className={s['routeDetails__container_vertical']}>
-        <span className={s['time']}>{getTime(routeInfo.departure.to.datetime)}</span>
-        <span className={s['cityName']}>{routeInfo.departure.to.city.name}</span>
-        <span className={s['stationName']}>{routeInfo.departure.to.railway_station_name}</span>
+        <span className={s['time']}>{getTime(routeInfo.to.datetime)}</span>
+        <span className={s['cityName']}>{routeInfo.to.city.name}</span>
+        <span className={s['stationName']}>{routeInfo.to.railway_station_name}</span>
       </div>
       <div className={s['routeDetails__container_horisontal']}>
         <div className={s['routeDetails__container_vertical']}>
