@@ -11,11 +11,31 @@ import { ReactComponent as Reserved } from './../../images/Reserved.svg';
 import { ReactComponent as Sedentary } from './../../images/sedentary.svg';
 import s from './detailsFilter.module.css';
 import DateInput from '../dateInput/dateInput';
+import { RangeInput } from '../rangeInput/RangeInput';
 
 export const DetailsFilter = () => {
   const [isActive, setIsActive] = useState(false);
   const [opened, setOpened] = useState(false);
-  const [show, setShow] = useState(false);
+
+  const mark = [
+    {
+      value: 0,
+      label: '0:00',
+    },
+    { value: 24, label: '24:00' },
+    // { value: { value }, label: `${value}` },
+    // { value: { value }, label: `${value}` },
+  ];
+
+  const markCost = [
+    {
+      value: 1000,
+      label: '1000',
+    },
+    { value: 7000, label: '7000' },
+    // { value: { value }, label: `${value}` },
+    // { value: { value }, label: `${value}` },
+  ];
 
   return (
     <section className={s.details}>
@@ -80,31 +100,57 @@ export const DetailsFilter = () => {
         </div>
       </div>
 
-      <div className={s['filters-block']}>
-        <p className={s['filters-block-cost']}>Стоимость</p>
-        <input type='range' min='0' max='100' step='1' value='0' />
+      <div className={s['filter-block-cost']}>
+        <p className={s['filter-block-cost-text']}>Стоимость</p>
+        <RangeInput mark={markCost} min={1000} max={7000} />
       </div>
-      <div className={s['block-container']}>
-        <div className={s['block']}>
-          <There />
-          <p>Туда</p>
-        </div>
-        <div onClick={() => setIsActive(!isActive)}>
-          {isActive ? <Minus /> : <Plus />}
+      {/* <div className={s['block-container']}>
+        <div className={s['block-container']}>
+          <div className={s['block']}>
+            <There />
+            <p>Туда</p>
+          </div>
+          <div onClick={() => setIsActive(!isActive)}>
+            {isActive ? <Minus /> : <Plus />}
+          </div>
         </div>
         {isActive && (
           <div>
             <div>
-              <p className={s['filters-block-cost']}>Стоимость</p>
-              <input type='range' min='0' max='100' step='1' value='0' />
+              <p className={s['filters-block-cost']}>Время отбытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
             </div>
             <div>
-              <p className={s['filters-block-cost']}>Стоимость</p>
-              <input type='range' min='0' max='100' step='1' value='0' />
+              <p className={s['filters-block-cost']}>Время прибытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
+            </div>
+          </div>
+        )}
+      </div> */}
+      <div className={s['blocks-container']}>
+        <div className={s['block-container-header']}>
+          <div className={s['block']}>
+            <There />
+            <p>Туда</p>
+          </div>
+          <div onClick={() => setIsActive(!isActive)}>
+            {isActive ? <Minus /> : <Plus />}
+          </div>
+        </div>
+        {isActive && (
+          <div>
+            <div>
+              <p className={s['filters-block-cost']}>Время отбытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
+            </div>
+            <div>
+              <p className={s['filters-block-cost']}>Время прибытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
             </div>
           </div>
         )}
       </div>
+
       <div className={s['blocks-container']}>
         <div className={s['block-container']}>
           <div className={s['block']}>
@@ -118,12 +164,12 @@ export const DetailsFilter = () => {
         {opened && (
           <div>
             <div>
-              <p className={s['filters-block-cost']}>Стоимость</p>
-              <input type='range' min='0' max='100' step='1' value='0' />
+              <p className={s['filters-block-cost']}>Время отбытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
             </div>
             <div>
-              <p className={s['filters-block-cost']}>Стоимость</p>
-              <input type='range' min='0' max='100' step='1' value='0' />
+              <p className={s['filters-block-cost']}>Время прибытия</p>
+              <RangeInput mark={mark} min={0} max={24} />
             </div>
           </div>
         )}

@@ -129,12 +129,34 @@
   transform: translateX(50px);
 }
 
+.filter-block-cost {
+  padding: 37px 32px 32px 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.filter-block-cost-text {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 11px;
+}
+
 .block-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 34px;
-  border-bottom: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+}
+
+.block-container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34px;
 }
 
 .block {
