@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import s from './coachTypeSelect.module.css';
 import cn from 'classnames';
 import { ReactComponent as FourthClass } from '../../images/Fourth_class.svg';
@@ -6,25 +6,19 @@ import { ReactComponent as ThirdClass } from '../../images/Third_class.svg';
 import { ReactComponent as SecondClass } from '../../images/Second_class.svg';
 import { ReactComponent as FirstClass } from '../../images/First_class.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoach, setCoachType } from '../../storage/slices/trainSlice';
+import { resetCoachType, setCoachType } from '../../storage/slices/trainSlice';
 
 export const CoachTypeSelect = ({ routeInfo, direction }) => {
   const dispatch = useDispatch();
   const coachType = useSelector((s) => s.trains[`${direction}CoachType`]);
-  console.log('routeInfo type select', routeInfo);
 
-  const setType = useCallback(
-    (type) => {
-      dispatch(setCoachType({ direction, type }));
-      dispatch(getCoach({ direction, routeId: routeInfo._id }));
-    },
-    [direction, dispatch, routeInfo._id]
-  );
+  const setType = (type) => {
+    dispatch(setCoachType({ direction, type }));
+  };
 
   useEffect(() => {
-    if (routeInfo[`have_${coachType}`]) return;
-    setType('');
-  }, [dispatch, routeInfo, coachType, setType]);
+    dispatch(resetCoachType());
+  }, [dispatch, routeInfo]);
 
   return (
     <div>

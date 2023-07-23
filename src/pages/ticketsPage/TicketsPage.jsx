@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoach, setFilter } from '../../storage/slices/trainSlice';
+import { getCoach, getTrains, setFilter } from '../../storage/slices/trainSlice';
 import { RouteDetails } from '../../components/routeDetails/routeDetails';
 import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
 import { Header } from '../../components/headerBlock/header/Header';
@@ -13,20 +13,30 @@ import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const getTransition = () => {
     navigate('/stepthree');
   };
-  const { currentRoute, departureCoach, arrivalCoach, filters } = useSelector(
-    (s) => s.trains
-  );
-  console.log('departureCoach', departureCoach);
-  console.log('arrivalCoach', arrivalCoach);
-  const dispatch = useDispatch();
+  const {
+    filters,
+    currentRoute,
+    departureCoach,
+    departureCoachType,
+    departureFilteredCoach,
+    arrivalCoach,
+    arrivalCoachType,
+    arrivalFilteredCoach,
+  } = useSelector((s) => s.trains);
+
+  useEffect(() => {
+    dispatch(getCoach(currentRoute));
+  }, [dispatch, currentRoute]);
 
   // DEV тест переключателя фильтров
   const handleFilter = (filter) => {
     dispatch(setFilter(filter));
+    dispatch(getTrains());
   };
 
   return (
@@ -78,6 +88,15 @@ export const TicketsPage = () => {
                 <p>{coach.class_type}</p>
               </div>
             ))}
+          <hr />
+          {!!departureFilteredCoach.length &&
+            !!departureCoachType &&
+            departureFilteredCoach.map(({ coach }, i) => (
+              <div key={i}>
+                <p>{coach.name}</p>
+                <p>{coach.class_type}</p>
+              </div>
+            ))}
           {currentRoute.arrival && (
             <>
               <RouteDetails
@@ -91,6 +110,22 @@ export const TicketsPage = () => {
               />
             </>
           )}
+          {!!arrivalCoach.length &&
+            arrivalCoach.map(({ coach }, i) => (
+              <div key={i}>
+                <p>{coach.name}</p>
+                <p>{coach.class_type}</p>
+              </div>
+            ))}
+          <hr />
+          {!!arrivalFilteredCoach.length &&
+            !!arrivalCoachType &&
+            arrivalFilteredCoach.map(({ coach }, i) => (
+              <div key={i}>
+                <p>{coach.name}</p>
+                <p>{coach.class_type}</p>
+              </div>
+            ))}
           <button onClick={getTransition}>Далее</button>
         </div>
       </div>
