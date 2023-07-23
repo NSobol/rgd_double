@@ -7,7 +7,6 @@ const initialState = {
   trains: [],
   loading: false,
   total: 0,
-  currentRoute: {},
   searchParams: {},
   filters: {
     have_first_class: false,
@@ -17,20 +16,28 @@ const initialState = {
     have_wifi: false,
     have_air_conditioning: false,
   },
-  departureCoachType: '',
+  currentRoute: {},
   departureCoach: [],
-  arrivalCoachType: '',
+  departureCoachType: '',
+  departureFilteredCoach: [],
   arrivalCoach: [],
+  arrivalCoachType: '',
+  arrivalFilteredCoach: [],
 };
 
 // actions ----------------------------------------------------
 export const getTrains = createAsyncThunk(
   'trains',
-  async function (data, { getState, fulfillWithValue, rejectWithValue }) {
+  async function (_, { getState, fulfillWithValue, rejectWithValue }) {
     const { trains } = getState();
     let stringParams = '';
     for (let key in trains.searchParams) {
       stringParams += key + '=' + trains.searchParams[key] + '&';
+    }
+    for (let key in trains.filters) {
+      if (trains.filters[key]) {
+        stringParams += key + '=' + trains.filters[key] + '&';
+      }
     }
     try {
       const data = await api.getAllRoutes(stringParams);
@@ -43,17 +50,15 @@ export const getTrains = createAsyncThunk(
 
 export const getCoach = createAsyncThunk(
   'trainSlice/getCoach',
-  async function ({ direction, routeId }, { getState, fulfillWithValue, rejectWithValue }) {
-    const { trains } = getState();
-    let stringFilters = '?';
-    for (let key in trains.filters) {
-      if (trains.filters[key]) {
-        stringFilters += key + '=' + trains.filters[key] + '&';
-      }
-    }
+  async function (currentRoute, { fulfillWithValue, rejectWithValue }) {
     try {
-      const data = await api.getRouteSeats(routeId, stringFilters);
-      return fulfillWithValue({ data, direction });
+      if (currentRoute.arrival) {
+        const departureCoach = await api.getRouteSeats(currentRoute.departure._id);
+        const arrivalCoach = await api.getRouteSeats(currentRoute.arrival._id);
+        return fulfillWithValue({ departureCoach, arrivalCoach });
+      }
+      const departureCoach = await api.getRouteSeats(currentRoute.departure._id);
+      return fulfillWithValue({ departureCoach });
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -78,8 +83,21 @@ const trains = createSlice({
     selectRoute(state, action) {
       state.currentRoute = action.payload;
     },
-    setCoachType(state, action) {
-      state[`${action.payload.direction}CoachType`] = action.payload.type;
+    setCoachType(state, { payload }) {
+      state[`${payload.direction}CoachType`] = payload.type;
+      state[`${payload.direction}FilteredCoach`] = state[`${payload.direction}Coach`].filter(
+        ({ coach }) => {
+          return payload.type.includes(coach.class_type);
+        }
+      );
+    },
+    resetCoachType(state, action) {
+      state.departureCoach = [];
+      state.departureCoachType = '';
+      state.departureFilteredCoach = [];
+      state.arrivalCoach = [];
+      state.arrivalCoachType = '';
+      state.arrivalFilteredCoach = [];
     },
   },
   extraReducers: (builder) => {
@@ -89,7 +107,8 @@ const trains = createSlice({
     });
 
     builder.addCase(getCoach.fulfilled, (state, action) => {
-      state[`${action.payload.direction}Coach`] = action.payload.data ?? [];
+      state.departureCoach = action.payload.departureCoach;
+      state.arrivalCoach = action.payload.arrivalCoach ?? [];
     });
 
     builder.addMatcher(isError, (state, action) => {
@@ -103,5 +122,5 @@ const trains = createSlice({
   },
 });
 
-export const { setCity, setDate, setFilter, selectRoute, setCoachType } = trains.actions;
+export const { setCity, setDate, setFilter, selectRoute, setCoachType, resetCoachType } = trains.actions;
 export default trains.reducer;
