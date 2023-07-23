@@ -1,6 +1,5 @@
 .details {
   width: 360px;
-  /* height: 1279px; */
   background: #3e3c41;
 }
 
@@ -31,7 +30,7 @@
   justify-content: flex-start;
 }
 
-.block p {
+.block > p {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -49,7 +48,7 @@
   border-top: 1px solid #e5e5e5;
 }
 
-.footer p {
+.footer > p {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -59,7 +58,7 @@
   text-transform: uppercase;
 }
 
-.footer span {
+.footer > span {
   color: #ffa800;
   font-family: Roboto;
   font-size: 48px;

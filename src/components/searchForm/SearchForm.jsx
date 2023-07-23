@@ -25,15 +25,23 @@ export const SearchForm = () => {
           <p>Направление</p>
           <div className={s['form-group-inputs']}>
             <CityInput placeholder={'Откуда'} name={'from_city'} />
-            <img src={Change} alt='Поменять местами' className={s['form-group-icon']} />
+            <img
+              src={Change}
+              alt='Поменять местами'
+              className={s['form-group-icon']}
+            />
             <CityInput placeholder={'Куда'} name={'to_city'} />
           </div>
         </div>
         <div className={s['form-group']}>
           <p>Дата</p>
           <div className={s['form-group-inputs-date']}>
-            <DateInput name={'date_start'} />
-            <DateInput name={'date_end'} />
+            <div className={s['form-group-inputs-date-container']}>
+              <DateInput name={'date_start'} />
+            </div>
+            <div className={s['form-group-inputs-date-container']}>
+              <DateInput name={'date_end'} />
+            </div>
           </div>
         </div>
         <button className={s['form-button']} type='submit'>
