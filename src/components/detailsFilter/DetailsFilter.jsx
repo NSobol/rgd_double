@@ -17,26 +17,6 @@ export const DetailsFilter = () => {
   const [isActive, setIsActive] = useState(false);
   const [opened, setOpened] = useState(false);
 
-  const mark = [
-    {
-      value: 0,
-      label: '0:00',
-    },
-    { value: 24, label: '24:00' },
-    // { value: { value }, label: `${value}` },
-    // { value: { value }, label: `${value}` },
-  ];
-
-  const markCost = [
-    {
-      value: 1000,
-      label: '1000',
-    },
-    { value: 7000, label: '7000' },
-    // { value: { value }, label: `${value}` },
-    // { value: { value }, label: `${value}` },
-  ];
-
   return (
     <section className={s.details}>
       <div className={s.header}>
@@ -101,32 +81,13 @@ export const DetailsFilter = () => {
       </div>
 
       <div className={s['filter-block-cost']}>
-        <p className={s['filter-block-cost-text']}>Стоимость</p>
-        <RangeInput mark={markCost} min={1000} max={7000} />
-      </div>
-      {/* <div className={s['block-container']}>
-        <div className={s['block-container']}>
-          <div className={s['block']}>
-            <There />
-            <p>Туда</p>
-          </div>
-          <div onClick={() => setIsActive(!isActive)}>
-            {isActive ? <Minus /> : <Plus />}
-          </div>
+        <p className={s['filter-block-cost-title']}>Стоимость</p>
+        <RangeInput min={1000} max={7000} />
+        <div className={s['filter-block-cost-text']}>
+          <p>300</p>
+          <p>7000</p>
         </div>
-        {isActive && (
-          <div>
-            <div>
-              <p className={s['filters-block-cost']}>Время отбытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
-            </div>
-            <div>
-              <p className={s['filters-block-cost']}>Время прибытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
-            </div>
-          </div>
-        )}
-      </div> */}
+      </div>
       <div className={s['blocks-container']}>
         <div className={s['block-container-header']}>
           <div className={s['block']}>
@@ -138,14 +99,22 @@ export const DetailsFilter = () => {
           </div>
         </div>
         {isActive && (
-          <div>
+          <div className={s['filter-time-container']}>
             <div>
-              <p className={s['filters-block-cost']}>Время отбытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
+              <p className={s['filters-block-time-out']}>Время отбытия</p>
+              <RangeInput min={0} max={24} />
+              <div className={s['filter-block-cost-text']}>
+                <p>0:00</p>
+                <p>24:00</p>
+              </div>
             </div>
             <div>
-              <p className={s['filters-block-cost']}>Время прибытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
+              <p className={s['filters-block-time']}>Время прибытия</p>
+              <RangeInput min={0} max={24} />
+              <div className={s['filter-block-cost-text']}>
+                <p>0:00</p>
+                <p>24:00</p>
+              </div>
             </div>
           </div>
         )}
@@ -162,14 +131,22 @@ export const DetailsFilter = () => {
           </div>
         </div>
         {opened && (
-          <div>
+          <div className={s['filter-time-container']}>
             <div>
-              <p className={s['filters-block-cost']}>Время отбытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
+              <p className={s['filters-block-time-out']}>Время отбытия</p>
+              <RangeInput min={0} max={24} />
+              <div className={s['filter-block-cost-text']}>
+                <p>0:00</p>
+                <p>24:00</p>
+              </div>
             </div>
             <div>
-              <p className={s['filters-block-cost']}>Время прибытия</p>
-              <RangeInput mark={mark} min={0} max={24} />
+              <p className={s['filters-block-time']}>Время прибытия</p>
+              <RangeInput min={0} max={24} />
+              <div className={s['filter-block-cost-text']}>
+                <p>0:00</p>
+                <p>24:00</p>
+              </div>
             </div>
           </div>
         )}

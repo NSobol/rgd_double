@@ -6,13 +6,12 @@ function valuetext(value) {
   return `${value}`;
 }
 
-export const RangeInput = ({mark, min, max}) => {
-  const [value, setValue] = useState([0, 1]);
+export const RangeInput = ({ mark, min, max }) => {
+  const [value, setValue] = useState([0,1]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  
   return (
     <Box sx={{ width: 294 }}>
       <Slider
@@ -22,7 +21,6 @@ export const RangeInput = ({mark, min, max}) => {
         getAriaValueText={valuetext}
         min={min}
         max={max}
-        marks={mark}
         sx={{
           '& .MuiSlider-markLabel': {
             boxShadow: 'none',
@@ -33,6 +31,8 @@ export const RangeInput = ({mark, min, max}) => {
             'font-style': 'normal',
             'font-weight': 400,
             'line-height': 'normal',
+            position: 'relative',
+            'margin-top': '5px',
           },
           '& .MuiSlider-markLabelActive ': {
             boxShadow: 'none',
@@ -42,6 +42,8 @@ export const RangeInput = ({mark, min, max}) => {
             'font-style': 'normal',
             'font-weight': 400,
             'line-height': 'normal',
+            position: 'relative',
+            'margin-top': '5px',
           },
 
           '& .MuiSlider-thumb': {

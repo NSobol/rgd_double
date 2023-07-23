@@ -134,7 +134,7 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.filter-block-cost-text {
+.filter-block-cost-title {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -142,6 +142,19 @@
   font-weight: 400;
   line-height: normal;
   margin-bottom: 11px;
+}
+
+.filter-block-cost-text {
+  color: #e5e5e5;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .block-container {
@@ -173,4 +186,31 @@
   font-weight: 700;
   line-height: normal;
   margin-left: 12px;
+}
+
+.filters-block-time {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: right;
+  margin-bottom: 16px;
+  margin-top: 46px;
+}
+
+.filters-block-time-out {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.filter-time-container {
+  padding: 0 32px 32px 30px;
 }
