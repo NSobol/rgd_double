@@ -35,7 +35,7 @@ export const RouteDetails = ({direction, routeInfo}) => {
         <span className={s['stationName']}>{routeInfo.from.railway_station_name}</span>
       </div>
       <div className={s['routeDetails__container_vertical']}>
-          {direction === 'to' ? <ArrowR /> : <ArrowL />}
+          {direction === 'departure' ? <ArrowR /> : <ArrowL />}
       </div>
       <div className={s['routeDetails__container_vertical']}>
         <span className={s['time']}>{getTime(routeInfo.to.datetime)}</span>

@@ -12,19 +12,15 @@ import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelec
 import { useNavigate } from 'react-router';
 
 export const TicketsPage = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getTransition = () => {
     navigate('/stepthree');
   };
-  const { currentRoute, departureCoach } = useSelector((s) => s.trains);
-  console.log('currentRoute', currentRoute);
+  const { currentRoute, departureCoach, arrivalCoach, filters } = useSelector((s) => s.trains);
   console.log('departureCoach', departureCoach);
+  console.log('arrivalCoach', arrivalCoach);
   const dispatch = useDispatch();
-  // DEV тест запроса мест
-  const getS = () => {
-    dispatch(getCoach('64103b2f5c49ea0046358ef8'));
-  };
 
   // DEV тест переключателя фильтров
   const handleFilter = (filter) => {
@@ -38,16 +34,41 @@ export const TicketsPage = () => {
       <div className={s.container}>
         <DetailsTrip />
         <div className={s.ticketsBlock}>
-          <button onClick={getS}>getSeats</button>
-          <button onClick={() => handleFilter('have_first_class')}>
-            have_first_class
-          </button>
-          <RouteDetails direction={'to'} routeInfo={currentRoute.departure} />
+          <div className={s['filters']}>
+            <div className={s['filter']}>
+              <button onClick={() => handleFilter('have_first_class')}>Люкс</button>
+              <span>{filters.have_first_class ? 'Да' : 'Нет'}</span>
+            </div>
+            <div className={s['filter']}>
+              <button onClick={() => handleFilter('have_second_class')}>Купе</button>
+              <span>{filters.have_second_class ? 'Да' : 'Нет'}</span>
+            </div>
+            <div className={s['filter']}>
+              <button onClick={() => handleFilter('have_third_class')}>Плацкарт</button>
+              <span>{filters.have_third_class ? 'Да' : 'Нет'}</span>
+            </div>
+            <div className={s['filter']}>
+              <button onClick={() => handleFilter('have_fourth_class')}>Сидячий</button>
+              <span>{filters.have_fourth_class ? 'Да' : 'Нет'}</span>
+            </div>
+          </div>
+          <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
           <TicketsQuantity />
-          <CoachTypeSelect
-            routeInfo={currentRoute.departure}
-            direction={'departure'}
-          />
+          <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
+          {!!departureCoach.length &&
+            departureCoach.map(({ coach }, i) => (
+              <div key={i}>
+                <p>{coach.name}</p>
+                <p>{coach.class_type}</p>
+              </div>
+            ))}
+          {currentRoute.arrival && (
+            <>
+              <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
+              <TicketsQuantity />
+              <CoachTypeSelect routeInfo={currentRoute.arrival} direction={'arrival'} />
+            </>
+          )}
           <button onClick={getTransition}>Далее</button>
         </div>
       </div>

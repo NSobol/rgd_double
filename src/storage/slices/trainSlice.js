@@ -72,7 +72,8 @@ const trains = createSlice({
       state.searchParams[action.payload.name] = action.payload.value;
     },
     setFilter(state, action) {
-      state.filters[action.payload] = !state.filters[action.filter];
+      console.log(action);
+      state.filters[action.payload] = !state.filters[action.payload];
     },
     selectRoute(state, action) {
       state.currentRoute = action.payload;
