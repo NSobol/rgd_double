@@ -8,3 +8,12 @@
 .ticketsBlock {
   width: 959px;
 }
+
+.filters {
+  display: flex;
+  flex-direction: column;
+}
+.filter {
+  display: flex;
+  gap: 10px;
+}
