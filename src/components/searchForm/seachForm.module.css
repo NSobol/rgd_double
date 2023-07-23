@@ -17,7 +17,7 @@
   margin-bottom: 60px;
 }
 
-.form-group-inputs{
+.form-group-inputs {
   display: flex;
 }
 
@@ -54,7 +54,7 @@
   outline: none;
 }
 
-.form-group-input::placeholder{
+.form-group-input::placeholder {
   color: #e5e5e5;
 }
 
@@ -79,11 +79,16 @@
   margin-top: 32px;
   margin-left: auto;
 }
-input[type=date]::-webkit-calendar-picker-indicator{
+input[type='date']::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px;
-	opacity: 0;
+  opacity: 0;
 }
-input[type=date]{
-	background:url("./../../images/calendar.svg") #fff no-repeat 98% 50%;
+input[type='date'] {
+  background: url('./../../images/calendar.svg') #fff no-repeat 98% 50%;
+}
+
+.form-group-inputs-date-container {
+  width: 325px;
+  height: 60px;
 }

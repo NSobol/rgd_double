@@ -5,11 +5,11 @@ import { RouteDetails } from '../../components/routeDetails/routeDetails';
 import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
 import { Header } from '../../components/headerBlock/header/Header';
 import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
-import { DetailsTrip } from '../../components/detailsTrip/DetailsTrip';
 import s from './tickets.module.css';
 import { Crumbs } from '../../components/crumbs/Crumbs';
 import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelect';
 import { useNavigate } from 'react-router';
+import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
@@ -17,7 +17,9 @@ export const TicketsPage = () => {
   const getTransition = () => {
     navigate('/stepthree');
   };
-  const { currentRoute, departureCoach, arrivalCoach, filters } = useSelector((s) => s.trains);
+  const { currentRoute, departureCoach, arrivalCoach, filters } = useSelector(
+    (s) => s.trains
+  );
   console.log('departureCoach', departureCoach);
   console.log('arrivalCoach', arrivalCoach);
   const dispatch = useDispatch();
@@ -32,29 +34,43 @@ export const TicketsPage = () => {
       <Header />
       <Crumbs progress={2} />
       <div className={s.container}>
-        <DetailsTrip />
+        <DetailsFilter />
         <div className={s.ticketsBlock}>
           <div className={s['filters']}>
             <div className={s['filter']}>
-              <button onClick={() => handleFilter('have_first_class')}>Люкс</button>
+              <button onClick={() => handleFilter('have_first_class')}>
+                Люкс
+              </button>
               <span>{filters.have_first_class ? 'Да' : 'Нет'}</span>
             </div>
             <div className={s['filter']}>
-              <button onClick={() => handleFilter('have_second_class')}>Купе</button>
+              <button onClick={() => handleFilter('have_second_class')}>
+                Купе
+              </button>
               <span>{filters.have_second_class ? 'Да' : 'Нет'}</span>
             </div>
             <div className={s['filter']}>
-              <button onClick={() => handleFilter('have_third_class')}>Плацкарт</button>
+              <button onClick={() => handleFilter('have_third_class')}>
+                Плацкарт
+              </button>
               <span>{filters.have_third_class ? 'Да' : 'Нет'}</span>
             </div>
             <div className={s['filter']}>
-              <button onClick={() => handleFilter('have_fourth_class')}>Сидячий</button>
+              <button onClick={() => handleFilter('have_fourth_class')}>
+                Сидячий
+              </button>
               <span>{filters.have_fourth_class ? 'Да' : 'Нет'}</span>
             </div>
           </div>
-          <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
+          <RouteDetails
+            direction={'departure'}
+            routeInfo={currentRoute.departure}
+          />
           <TicketsQuantity />
-          <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
+          <CoachTypeSelect
+            routeInfo={currentRoute.departure}
+            direction={'departure'}
+          />
           {!!departureCoach.length &&
             departureCoach.map(({ coach }, i) => (
               <div key={i}>
@@ -64,9 +80,15 @@ export const TicketsPage = () => {
             ))}
           {currentRoute.arrival && (
             <>
-              <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
+              <RouteDetails
+                direction={'arrival'}
+                routeInfo={currentRoute.arrival}
+              />
               <TicketsQuantity />
-              <CoachTypeSelect routeInfo={currentRoute.arrival} direction={'arrival'} />
+              <CoachTypeSelect
+                routeInfo={currentRoute.arrival}
+                direction={'arrival'}
+              />
             </>
           )}
           <button onClick={getTransition}>Далее</button>
