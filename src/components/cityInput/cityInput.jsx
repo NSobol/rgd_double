@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import s from './cityInput.module.css';
 import { api } from '../../utils/api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCity } from '../../storage/slices/trainSlice';
 
-export const CityInput = ({ placeholder, name }) => {
+export const CityInput = memo(({ placeholder, name }) => {
   const dispatch = useDispatch();
-  const [cityName, setCityName] = useState('');
+  const { searchParams } = useSelector((s) => s.trains);
+  const [cityName, setCityName] = useState(searchParams[`${name}_name`]);
   const [cities, setCities] = useState([]);
 
   const selectCity = useCallback(
@@ -16,10 +17,10 @@ export const CityInput = ({ placeholder, name }) => {
       dispatch(setCity({ city, name }));
     },
     [dispatch, name]
-  ); ;
+  );
 
   useEffect(() => {
-    if (cityName === '') {
+    if (cityName === searchParams[`${name}_name`]) {
       setCities([]);
       return;
     }
@@ -34,7 +35,7 @@ export const CityInput = ({ placeholder, name }) => {
       });
     }, 500);
     return () => clearTimeout(timer);
-  }, [cityName, selectCity]);
+  }, [cityName, selectCity, name, searchParams]);
 
   return (
     <div className={s['cityInput-container']}>
@@ -63,4 +64,4 @@ export const CityInput = ({ placeholder, name }) => {
       )}
     </div>
   );
-};
+});

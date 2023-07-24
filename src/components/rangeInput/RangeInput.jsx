@@ -1,16 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTrains, setFilter } from '../../storage/slices/trainSlice';
 
 function valuetext(value) {
   return `${value}`;
 }
 
-export const RangeInput = ({ mark, min, max }) => {
-  const [value, setValue] = useState([0,1]);
+export const RangeInput = ({ min, max, filterMin, filterMax }) => {
+  const dispatch = useDispatch();
+  const { searchParams } = useSelector((s) => s.trains);
+  const [value, setValue] = useState([searchParams[filterMin], searchParams[filterMax]]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(setFilter({ filter: filterMin, value: value[0] }));
+      dispatch(setFilter({ filter: filterMax, value: value[1] }));
+      dispatch(getTrains());
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [dispatch, value, filterMin, filterMax]);
 
   return (
     <Box sx={{ width: 294 }}>
