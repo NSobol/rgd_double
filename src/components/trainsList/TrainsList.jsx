@@ -1,7 +1,7 @@
 import React from 'react'
 import { Train } from '../train/Train';
 
-export const TrainsList = ({ trains = [] }) => {
+export const TrainsList = ({ trains }) => {
   console.log(trains);
   return (
     <div>

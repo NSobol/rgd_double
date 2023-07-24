@@ -22,11 +22,128 @@
   background: #e4e0e9;
 }
 
+.header-icon {
+  margin: 58px 58px 17px 52px;
+}
+
+.header-number {
+  color: #3e3c41;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.header-route {
+  width: 153px;
+  color: #292929;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  text-transform: capitalize;
+  margin-top: 15px;
+  margin-left: auto;
+  padding-bottom: 40px;
+}
+
 .main {
   width: 479px;
   border-right: 1px solid #e5e5e5;
+  display: flex;
 }
 
+.route-container-from,
+.route-container-to,
+.route-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.route-container-from {
+  margin-top: 54px;
+  margin-left: 39px;
+  margin-right: 45px;
+}
+.route-container-to {
+  margin-top: 54px;
+  margin-right: 45px;
+  margin-left: 51px;
+}
+.route-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.route-container-time {
+  width: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.time {
+  color: #000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.cityName {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.stationName {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 .footer {
   width: 283px;
+}
+
+.footer-icon {
+  margin-left: 163px;
+  margin-top: 31px;
+}
+
+.footer-button {
+  width: 228px;
+  height: 39px;
+  border-radius: 5px;
+  background: #ffa800;
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  border: 1px solid #ffa800;
+  margin: 18px 20px 23px 35px;
+}
+
+.footer-button:active {
+  background-color: #fff;
+  color: #ffa800;
 }
