@@ -9,11 +9,8 @@ import { OrderConfirmationPage } from './pages/orderConfirmationPage/OrderConfir
 import { ListTrainsPage } from './pages/listTrainsPage/ListTrainsPage';
 import { TicketsPage } from './pages/ticketsPage/TicketsPage';
 import { PassengersPage } from './pages/passengersPage/PassengersPage';
-// import { useDispatch } from 'react-redux';
 
 function App() {
-  // const dispatch = useDispatch();
-
   return (
     <div className='App'>
       <Routes>

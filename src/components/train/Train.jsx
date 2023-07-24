@@ -9,7 +9,6 @@ export const Train = ({ item }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const data = item.departure;
-  console.log(data);
 
   const onSelect = () => {
     dispatch(selectRoute(item));
