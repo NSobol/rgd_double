@@ -120,7 +120,7 @@ const trains = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getTrains.fulfilled, (state, action) => {
       state.trains = action.payload.items ?? [];
-      state.total = action.payload.total;
+      state.total = action.payload.total_count;
     });
 
     builder.addCase(getCoach.fulfilled, (state, action) => {

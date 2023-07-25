@@ -55,8 +55,14 @@
   width: 479px;
   border-right: 1px solid #e5e5e5;
   display: flex;
+  flex-direction: column;
 }
 
+.main-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
 .route-container-from,
 .route-container-to,
 .route-container {
@@ -67,17 +73,15 @@
 }
 
 .route-container-from {
+  width: 120px;
   margin-top: 54px;
-  margin-left: 39px;
-  margin-right: 45px;
 }
 .route-container-to {
+  width: 120px;
   margin-top: 54px;
-  margin-right: 45px;
-  margin-left: 51px;
 }
 .route-container {
-  margin-top: 40px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -85,11 +89,18 @@
 }
 
 .route-container-time {
-  width: 65px;
+  width: 130px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: #c4c4c4;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 7px;
 }
 .time {
   color: #000;
@@ -122,6 +133,59 @@
   width: 283px;
 }
 
+.seates-info {
+  padding: 41px 22px 31px 27px;
+}
+
+.seates-info-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.seates-info-name {
+  width: 86px;
+  color: #3e3c41;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.seates-info-count {
+  color: #ffa800;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.seates-info-text {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.seates-info-price {
+  width: 50px;
+  color: #2d2b2f;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.seates-info-val {
+  color: #928f94;
+  font-size: 24px;
+}
 .footer-icon {
   margin-left: 163px;
   margin-top: 31px;

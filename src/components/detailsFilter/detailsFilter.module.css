@@ -1,5 +1,6 @@
 .details {
   width: 360px;
+  height: fit-content;
   background: #3e3c41;
 }
 

@@ -27,7 +27,7 @@ export const DetailsFilter = () => {
   };
 
   return (
-    <section className={s.details}>
+    <div className={s.details}>
       <div className={s.header}>
         <div className={s['header-block']}>
           <p className={s['header-block-date']}>Дата поездки</p>
@@ -200,6 +200,6 @@ export const DetailsFilter = () => {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 };
