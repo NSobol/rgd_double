@@ -15,7 +15,7 @@ export const Train = ({ item }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const departure = item.departure;
-  const arrival = item?.arrival ? item.arrival : {};
+  const arrival = item?.arrival ? item.arrival : null;
 
   const onSelect = () => {
     dispatch(selectRoute(item));
@@ -30,6 +30,7 @@ export const Train = ({ item }) => {
       date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
     return date.getHours() + ':' + minutes;
   };
+
   return (
     <div className={s.container}>
       <div className={s.header}>
@@ -111,9 +112,28 @@ export const Train = ({ item }) => {
           {departure.available_seats_info?.fourth ? (
             <div className={s['seates-info-block']}>
               <p className={s['seates-info-name']}>Сидячий</p>
-              <span className={s['seates-info-count']}>
-                {departure.available_seats_info.fourth}
-              </span>
+              <div className={s.tooltip}>
+                <span className={s['seates-info-count']}>
+                  {departure.available_seats_info.fourth}
+                </span>
+                <div className={s['tooltip-block']}>
+                  <div className={s['tooltip-info-block']}>
+                    <p className={s['tooltip-info-name']}>верхние</p>
+                    <p className={s['tooltip-info-price']}>
+                      {departure.price_info.fourth?.top_price}
+                    </p>
+                    <p className={s['tooltip-info-val']}>₽</p>
+                  </div>
+                  <br />
+                  <div className={s['tooltip-info-block']}>
+                    <span className={s['tooltip-info-name']}>нижние</span>
+                    <span className={s['tooltip-info-price']}>
+                      {departure.price_info.fourth?.bottom_price}
+                    </span>
+                    <span className={s['tooltip-info-val']}>₽</span>
+                  </div>
+                </div>
+              </div>
               <p className={s['seates-info-text']}>от</p>
               <span className={s['seates-info-price']}>
                 {departure.price_info.fourth?.bottom_price}
@@ -126,9 +146,36 @@ export const Train = ({ item }) => {
           {departure.available_seats_info?.third ? (
             <div className={s['seates-info-block']}>
               <p className={s['seates-info-name']}>Плацкарт</p>
-              <span className={s['seates-info-count']}>
-                {departure.available_seats_info.third}
-              </span>
+              <div className={s.tooltip}>
+                <span className={s['seates-info-count']}>
+                  {departure.available_seats_info.third}
+                </span>
+                <div className={s['tooltip-block']}>
+                  <div className={s['tooltip-info-block']}>
+                    <p className={s['tooltip-info-name']}>верхние</p>
+                    <p className={s['tooltip-info-price']}>
+                      {departure.price_info.third?.top_price}
+                    </p>
+                    <p className={s['tooltip-info-val']}>₽</p>
+                  </div>
+                  <br />
+                  <div className={s['tooltip-info-block']}>
+                    <span className={s['tooltip-info-name']}>нижние</span>
+                    <span className={s['tooltip-info-price']}>
+                      {departure.price_info.third?.bottom_price}
+                    </span>
+                    <span className={s['tooltip-info-val']}>₽</span>
+                  </div>
+                  <br />
+                  <div className={s['tooltip-info-block']}>
+                    <span className={s['tooltip-info-name']}>боковые</span>
+                    <span className={s['tooltip-info-price']}>
+                      {departure.price_info.third?.side_price}
+                    </span>
+                    <span className={s['tooltip-info-val']}>₽</span>
+                  </div>
+                </div>
+              </div>
               <p className={s['seates-info-text']}>от</p>
               <span className={s['seates-info-price']}>
                 {departure.price_info.third?.side_price}
@@ -142,9 +189,28 @@ export const Train = ({ item }) => {
           {departure.available_seats_info?.second ? (
             <div className={s['seates-info-block']}>
               <p className={s['seates-info-name']}>Купе</p>
-              <span className={s['seates-info-count']}>
-                {departure.available_seats_info.second}
-              </span>
+              <div className={s.tooltip}>
+                <span className={s['seates-info-count']}>
+                  {departure.available_seats_info.second}
+                </span>
+                <div className={s['tooltip-block']}>
+                  <div className={s['tooltip-info-block']}>
+                    <p className={s['tooltip-info-name']}>верхние</p>
+                    <p className={s['tooltip-info-price']}>
+                      {departure.price_info.second?.top_price}
+                    </p>
+                    <p className={s['tooltip-info-val']}>₽</p>
+                  </div>
+                  <br />
+                  <div className={s['tooltip-info-block']}>
+                    <span className={s['tooltip-info-name']}>нижние</span>
+                    <span className={s['tooltip-info-price']}>
+                      {departure.price_info.second?.bottom_price}
+                    </span>
+                    <span className={s['tooltip-info-val']}>₽</span>
+                  </div>
+                </div>
+              </div>
               <p className={s['seates-info-text']}>от</p>
               <span className={s['seates-info-price']}>
                 {departure.price_info.second?.top_price}
@@ -158,9 +224,28 @@ export const Train = ({ item }) => {
           {departure.available_seats_info?.first ? (
             <div className={s['seates-info-block']}>
               <p className={s['seates-info-name']}>Люкс</p>
-              <span className={s['seates-info-count']}>
-                {departure.available_seats_info.first}
-              </span>
+              <div className={s.tooltip}>
+                <span className={s['seates-info-count']}>
+                  {departure.available_seats_info.first}
+                </span>
+                <div className={s['tooltip-block']}>
+                  <div className={s['tooltip-info-block']}>
+                    <p className={s['tooltip-info-name']}>верхние</p>
+                    <p className={s['tooltip-info-price']}>
+                      {departure.price_info.first?.top_price}
+                    </p>
+                    <p className={s['tooltip-info-val']}>₽</p>
+                  </div>
+                  <br />
+                  <div className={s['tooltip-info-block']}>
+                    <span className={s['tooltip-info-name']}>нижние</span>
+                    <span className={s['tooltip-info-price']}>
+                      {departure.price_info.first?.bottom_price}
+                    </span>
+                    <span className={s['tooltip-info-val']}>₽</span>
+                  </div>
+                </div>
+              </div>
               <p className={s['seates-info-text']}>от</p>
               <span className={s['seates-info-price']}>
                 {departure.price_info.first?.top_price}

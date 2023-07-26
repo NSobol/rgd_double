@@ -211,3 +211,73 @@
   background-color: #fff;
   color: #ffa800;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-block {
+  visibility: hidden;
+  width: 276px;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: #e5e5e5;
+  position: absolute;
+  z-index: 1;
+  padding: 15px 17px 23px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tooltip:hover .tooltip-block {
+  visibility: visible;
+  top: 100%;
+  left: 50%;
+  margin-left: -134px;
+}
+
+.tooltip-info-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tooltip-info-name {
+  display: block;
+  color: #000;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.tooltip-info-price {
+  display: block;
+  color: #2d2b2f;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.tooltip-info-val {
+  display: block;
+  color: #928f94;
+  font-size: 24px;
+  margin-left: 8px;
+}
+
+.tooltip .tooltip-block::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent #e5e5e5 transparent;
+}
