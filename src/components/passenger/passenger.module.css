@@ -9,3 +9,58 @@
   max-height: 9999px;
   transition: all 0.5s cubic-bezier(1, 0, 1, 0);
 }
+
+.accordionItem {
+  width: 960px;
+  height: fit-content;
+  border: 1px solid #c4c4c4;
+  background: #fff;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 44px;
+}
+
+.accordionTitle {
+  width: 960px;
+  height: 107px;
+  border: 1px solid #c4c4c4;
+  background: #fff;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  padding: 42px 45px 33px 25px;
+}
+
+.active {
+  width: 958px;
+  height: 107px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #928f94;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 42px 45px 33px 25px;
+}
+
+.container {
+  display: flex;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.title {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 16px;
+}
+
+.selectAge {
+  margin-top: 38px;
+  margin-left: 36px;
+}

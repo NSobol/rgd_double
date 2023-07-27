@@ -1,6 +1,8 @@
 .passengers {
   width: 100%;
+  height: fit-content;
   background: #f7f5f9;
+  padding-bottom: 140px;
 }
 
 .passengers-content {

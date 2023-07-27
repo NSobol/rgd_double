@@ -18,7 +18,7 @@ export const PassengersList = () => {
           <Passenger key={i} opened={i} index={i} item={item} />
         ))}
       </div>
-      <button onClick={getTransition}>Далее</button>
+      <button className={s['passengers-button'] } onClick={getTransition}>Далее</button>
     </div>
   );
 };
