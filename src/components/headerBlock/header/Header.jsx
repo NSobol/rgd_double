@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Logo } from './../logo/Logo';
 import { Menu } from './../menu/Menu';
-import { SearchFormNew } from './../../searchFormNew/SearchFormNew';
 import s from './header.module.css';
 import { useLocation } from 'react-router-dom';
 import { SearchForm } from '../../searchForm/SearchForm';
@@ -14,6 +13,7 @@ export const Header = () => {
   let activeClass = '';
   let activeLocation = '';
   let type = 'search';
+
   switch (splitLocation) {
     case '':
       activeClass = 'headerMain';
@@ -30,9 +30,7 @@ export const Header = () => {
       break;
   }
 
-  useEffect(() => {
-    console.log(splitLocation);
-  }, [splitLocation]);
+  useEffect(() => {}, [location]);
 
   return (
     <div className={s[activeClass]} id='header'>

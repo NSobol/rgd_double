@@ -4,13 +4,13 @@ import './App.css';
 import { MainPage } from './pages/mainPage/MainPage';
 import { LoadingSearchPage } from './pages/loadingSearchPage/LoadingSearchPage';
 import { SuccessfulOrderPage } from './pages/successfulOrderPage/SuccessfulOrderPage';
-import { PaymentPage } from './pages/paymentPage/PaymentPage';
 import { OrderConfirmationPage } from './pages/orderConfirmationPage/OrderConfirmationPage';
 import { ListTrainsPage } from './pages/listTrainsPage/ListTrainsPage';
 import { TicketsPage } from './pages/ticketsPage/TicketsPage';
 import { PassengersPage } from './pages/passengersPage/PassengersPage';
 import { Header } from './components/headerBlock/header/Header';
 import { FooterContainer } from './components/footerBlock/footerContainer/FooterContainer';
+import { Payment } from './components/payment/Payment';
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
         <Route path='/steptwo' element={<TicketsPage />} />
         <Route path='/stepthree' element={<PassengersPage />} />
         <Route path='/fulorder' element={<SuccessfulOrderPage />} />
-        <Route path='/payment' element={<PaymentPage />} />
+        <Route path='/payment' element={<Payment  />} />
         <Route path='/confirm' element={<OrderConfirmationPage />} />
       </Routes>
       <FooterContainer />

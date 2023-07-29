@@ -11,7 +11,7 @@ import dayjs from 'dayjs';
 const duration = require('dayjs/plugin/duration');
 dayjs.extend(duration);
 
-export const Train = ({ item }) => {
+export const Train = ({ item, type = 'train' }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const departure = item.departure;
@@ -22,6 +22,9 @@ export const Train = ({ item }) => {
     navigate('/steptwo');
   };
 
+  const onRedirect = () => {
+    navigate('/');
+  };
   const travelTime = dayjs.duration(departure.duration * 1000);
 
   const getTime = (dateInMS) => {
@@ -32,7 +35,7 @@ export const Train = ({ item }) => {
   };
 
   return (
-    <div className={s.container}>
+    <div className={s[`${type === 'train' ? 'container' : 'containerNew'}`]}>
       <div className={s.header}>
         <Loco className={s['header-icon']} />
         <p className={s['header-number']}>{departure.train._id.slice(-4)}</p>
@@ -258,9 +261,15 @@ export const Train = ({ item }) => {
         </div>
         <Icons className={s['footer-icon']} />
         <br />
-        <button onClick={onSelect} className={s['footer-button']}>
-          Выбрать места
-        </button>
+        {type === 'train' ? (
+          <button onClick={onSelect} className={s['footer-button']}>
+            Выбрать места
+          </button>
+        ) : (
+          <button onClick={onRedirect} className={s['footer-button-new']}>
+            Изменить
+          </button>
+        )}
       </div>
     </div>
   );
