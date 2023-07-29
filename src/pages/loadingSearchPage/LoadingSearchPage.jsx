@@ -1,14 +1,18 @@
 import React from 'react';
-import { FooterContainer } from '../../components/footerBlock/footerContainer/FooterContainer';
-import { Header } from '../../components/headerBlock/header/Header';
-import { Loading } from '../../components/main/loading/Loading';
+import AnimateDownload from './../../images/animation-downloads.gif';
+import s from './loading.module.css';
 
 export const LoadingSearchPage = () => {
   return (
-    <div>
-      <Header />
-      <Loading />
-      <FooterContainer />
-    </div>
+    <section className={s.loading}>
+      <div className={s['loading-container']}>
+        <p className={s['loading-container-text']}>идет поиск</p>
+        <img
+          src={AnimateDownload}
+          alt='Идет поиск'
+          className={s['loading-container-gif']}
+        />
+      </div>
+    </section>
   );
 };

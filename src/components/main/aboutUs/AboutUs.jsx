@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './aboutUs.module.css';
 
-const AboutUs = () => {
+export const AboutUs = () => {
   return (
     <section className={s.aboutUs} id='aboutUs'>
       <div className={s['aboutUs-container']}>
@@ -32,4 +32,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+

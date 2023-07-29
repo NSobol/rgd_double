@@ -1,12 +1,8 @@
 import React from 'react';
-// import { useForm } from 'react-hook-form';
 import s from './seachFormNew.module.css';
 import Change from './../../images/change.svg';
-// import { useNavigate } from 'react-router-dom';
 
 export const SearchFormNew = () => {
-  // const { register, handleSubmit } = useForm();
-  // const navigate = useNavigate();
   return (
     <div className={s.formContainer}>
       <form className={s.form}>

@@ -19,11 +19,11 @@
   justify-content: space-between;
 }
 
-.form-group {
+.form-groupNew {
   margin-bottom: 48px;
 }
 
-.form-group p {
+.form-groupNew p {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -54,7 +54,7 @@
   margin-left: 6px;
 }
 
-.form-group-input {
+.form-group-inputNew {
   color: #e5e5e5;
   text-transform: capitalize;
 }
@@ -65,7 +65,7 @@
   text-transform: uppercase;
 }
 
-.form-group-inputs-date {
+.form-group-inputs-dateNew {
   display: flex;
   justify-content: space-between;
   gap: 35px;

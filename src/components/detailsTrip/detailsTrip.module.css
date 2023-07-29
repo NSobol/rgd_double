@@ -17,11 +17,14 @@
 }
 
 .block-container {
+  padding: 34px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.block-container-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 34px;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 .block {
@@ -30,7 +33,7 @@
   justify-content: flex-start;
 }
 
-.block > p {
+.block-there {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -40,6 +43,29 @@
   margin-left: 12px;
 }
 
+.block-there-date {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: end;
+  padding-bottom: 3px;
+  padding-left: 25px;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.content.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}
 .footer {
   display: flex;
   justify-content: space-between;

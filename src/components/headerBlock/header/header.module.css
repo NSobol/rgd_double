@@ -1,8 +1,68 @@
 .header {
-  height: 554px;
+  height: fit-content;
   width: 100%;
   background-image: url('./../../../images/headerImage2.png');
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 15px;
+}
+
+.headerFinal {
+  height: 834px;
+  width: 100%;
+  background-image: url('./../../../images/headerImage3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 15px;
+}
+
+.headerFinal-title-container {
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+.headerFinal-title {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 351px;
+}
+
+.headerMain {
+  height: fit-content;
+  width: 100%;
+  background-image: url('./../../../images/headerImage.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 15px;
+}
+
+.search-container {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: flex;
+}
+.search-container-block {
+  width: 506px;
+  height: 170px;
+  margin-top: 415px;
+  margin-left: 90px;
+}
+.search-container-text {
+  color: #fff;
+  font-family: RobotoThin;
+  font-size: 72px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.search-container-text1 {
+  color: #fff;
+  font-family: RobotoBold;
+  font-size: 72px;
+  font-style: normal;
+  line-height: normal;
 }

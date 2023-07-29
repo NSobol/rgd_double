@@ -1,11 +1,11 @@
-.total-admin{
-	display: flex;
-justify-content: space-between;
-margin-bottom: 47px;
+.total-admin {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 47px;
 }
 
-.total-sort{
-	display: flex;
+.total-sort {
+  display: flex;
 }
 .total-count {
   color: #928f94;
