@@ -5,11 +5,14 @@ import Kapitan from './../../images/Kapitan.png';
 import Tickets from './../../images/tickets.png';
 import { FormRating } from '../../components/rating/FormRating';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const SuccessfulOrderPage = () => {
-  const orderNumb = '285AA';
-  const orderSum = 7760;
-  const userName = 'Ирина Эдуардовна';
+  const orderInfo = useSelector((s) => s.order);
+  const orderNumb = orderInfo.order_number;
+  const orderSum = orderInfo.order_sum;
+  const userInfo = orderInfo.user;
+  const userName = `${userInfo.first_name}  ${userInfo.patronymic}`;
 
   return (
     <div className={s.content}>

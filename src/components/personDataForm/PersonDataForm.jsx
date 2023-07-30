@@ -2,14 +2,20 @@ import React from 'react';
 import s from './person.module.css';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from './../../storage/slices/orderSlice';
 
 export const PersonDataForm = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    console.log(data);
+    dispatch(setUser(data));
     navigate('/confirm');
   };
+
   return (
     <section className={s.person}>
       <div className={s['person-container']}>
@@ -28,11 +34,11 @@ export const PersonDataForm = () => {
                 </label>
                 <input
                   type='text'
-                  name='surname'
+                  name='last_name'
                   id='surname'
                   required
                   className={s['personal-form-group-item-input']}
-                  {...register('surname')}
+                  {...register('last_name')}
                 />
               </div>
               <div className={s['personal-form-group-item']}>
@@ -44,11 +50,11 @@ export const PersonDataForm = () => {
                 </label>
                 <input
                   type='text'
-                  name='name'
+                  name='first_name'
                   id='name'
                   required
                   className={s['personal-form-group-item-input']}
-                  {...register('name')}
+                  {...register('first_name')}
                 />
               </div>
               <div className={s['personal-form-group-item']}>
@@ -60,11 +66,11 @@ export const PersonDataForm = () => {
                 </label>
                 <input
                   type='text'
-                  name='middleName'
+                  name='patronymic'
                   id='middleName'
                   required
                   className={s['personal-form-group-item-input']}
-                  {...register('middleName')}
+                  {...register('patronymic')}
                 />
               </div>
             </div>
@@ -78,12 +84,12 @@ export const PersonDataForm = () => {
                 </label>
                 <input
                   type='tel'
-                  name='tel'
+                  name='phone'
                   id='tel'
                   required
                   placeholder='+7 ___ ___ __ __'
                   className={s['personal-form-group-item-input']}
-                  {...register('tel')}
+                  {...register('phone')}
                 />
               </div>
             </div>
@@ -116,10 +122,10 @@ export const PersonDataForm = () => {
                 <input
                   className={s['person-payment-type-check']}
                   type='radio'
-                  name='pay'
+                  name='payment_method'
                   id='online'
                   value='Онлайн'
-                  {...register('radio')}
+                  {...register('payment_method')}
                 />
                 <label
                   htmlFor='online'
@@ -144,15 +150,12 @@ export const PersonDataForm = () => {
                 <input
                   className={s['person-payment-type-check']}
                   type='radio'
-                  name='pay'
+                  name='payment_method'
                   id='cash'
                   value='Наличными'
-                  {...register('radio')}
+                  {...register('payment_method')}
                 />
-                <label
-                  htmlFor='cash'
-                  className={s['person-payment-type-cash']}
-                >
+                <label htmlFor='cash' className={s['person-payment-type-cash']}>
                   Наличными
                 </label>
               </div>

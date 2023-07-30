@@ -72,7 +72,7 @@ export const TicketsPage = () => {
                 <p>{coach.class_type}</p>
               </div>
             ))}
-          <button onClick={getTransition}>Далее</button>
+          <button className={s['ticketsFull-button'] } onClick={getTransition}>Далее</button>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ export const Passenger = ({ index }) => {
       <div className={s[`${isActive}`]}>
         <form id='formPassenger' onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <select name='' id='' className={ s.selectAge}>
+            <select name='' id='' className={s.selectAge}>
               <option value='Взрослый'>Взрослый</option>
               <option value='Детский'>Детский</option>
             </select>
@@ -40,11 +40,11 @@ export const Passenger = ({ index }) => {
               </label>
               <input
                 type='text'
-                name='surname'
+                name='last_name'
                 id='surname'
                 required
                 className={s['personal-form-group-item-input']}
-                {...register('surname')}
+                {...register('last_name')}
               />
             </div>
             <div className={s['personal-form-group-item']}>
@@ -56,11 +56,11 @@ export const Passenger = ({ index }) => {
               </label>
               <input
                 type='text'
-                name='name'
+                name='first_name'
                 id='name'
                 required
                 className={s['personal-form-group-item-input']}
-                {...register('name')}
+                {...register('first_name')}
               />
             </div>
             <div className={s['personal-form-group-item']}>
@@ -72,12 +72,46 @@ export const Passenger = ({ index }) => {
               </label>
               <input
                 type='text'
-                name='middleName'
+                name='patronymic'
                 id='middleName'
                 required
                 className={s['personal-form-group-item-input']}
-                {...register('middleName')}
+                {...register('patronymic')}
               />
+            </div>
+
+            <div className={s['personal-form-group-item']}>
+              <label
+                htmlFor='dateBirthday'
+                className={s['personal-form-group-item-label']}
+              >
+                Дата рождения
+              </label>
+              <input
+                type='date'
+                name='birthday'
+                id='dateBirthday'
+                required
+                className={s['personal-form-group-item-input']}
+                {...register('birthday')}
+              />
+            </div>
+
+            <div className={s['passenger-type']}>
+              <input
+                className={s['passenger-type-check']}
+                type='checkbox'
+                name='limited_mobility'
+                id='limited_mobility'
+                value='Ограниченная подвижность'
+                {...register('limited_mobility')}
+              />
+              <label
+                htmlFor='limited_mobility'
+                className={s['passenger-type-mobility']}
+              >
+                ограниченная подвижность
+              </label>
             </div>
           </div>
         </form>

@@ -5,22 +5,32 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Pass } from './../../images/passenger.svg';
 import dayjs from 'dayjs';
+import { setOrderNumber } from '../../storage/slices/orderSlice';
 const duration = require('dayjs/plugin/duration');
 dayjs.extend(duration);
 
 export const OrderInfo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const currentRoute = useSelector((s) => s.trains.currentRoute);
-  console.log(currentRoute);
+  const order = useSelector((s) => s.order);
+  console.log(order);
+
+  const randomIntFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  const order_number = `${randomIntFromInterval(1000, 100000)}`;
+  
+  const getTransition = () => {
+    dispatch(setOrderNumber(order_number));
+    navigate('/fulorder');
+  };
+
   useEffect(() => {
     dispatch((s) => s.currentRoute);
   }, [dispatch, currentRoute]);
 
-  const getTransition = () => {
-    navigate('/fulorder');
-  };
   return (
     <div>
       <div className={s['block']}>

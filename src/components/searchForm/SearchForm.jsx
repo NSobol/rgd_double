@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import { getTrains } from '../../storage/slices/trainSlice';
 
 export const SearchForm = ({ type = 'search' }) => {
-  console.log(type);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
