@@ -80,6 +80,23 @@ export const Passenger = ({ index }) => {
               />
             </div>
 
+            <div class={s['form_toggle']}>
+              <div class={s['form_toggle-item-1']}>
+                <input
+                  id='fid-1'
+                  type='radio'
+                  name='radio'
+                  value='off'
+                  checked
+                />
+                <label for='fid-1'>М</label>
+              </div>
+              <div class={s['form_toggle-item-2']}>
+                <input id='fid-2' type='radio' name='radio' value='on' />
+                <label for='fid-2'>Ж</label>
+              </div>
+            </div>
+
             <div className={s['personal-form-group-item']}>
               <label
                 htmlFor='dateBirthday'
@@ -88,11 +105,12 @@ export const Passenger = ({ index }) => {
                 Дата рождения
               </label>
               <input
-                type='date'
+                type='text'
                 name='birthday'
                 id='dateBirthday'
                 required
                 className={s['personal-form-group-item-input']}
+                placeholder='ДД/ММ/ГГ'
                 {...register('birthday')}
               />
             </div>
