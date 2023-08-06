@@ -8,7 +8,7 @@ export const SearchFormNew = () => {
       <form className={s.form}>
         <div className={s['form-fields']}>
           <div className={s['form-group']}>
-            <p>Направление</p>
+            <p className={s['form-group-title']}>Направление</p>
             <div className={s['form-group-inputs']}>
               <input
                 type='text'
@@ -28,7 +28,7 @@ export const SearchFormNew = () => {
             </div>
           </div>
           <div className={s['form-group']}>
-            <p>Дата</p>
+            <p className={s['form-group-title']}>Дата</p>
             <div className={s['form-group-inputs-date']}>
               <input type='date' className={s['form-group-input-date']} />
               <input type='date' className={s['form-group-input-date']} />

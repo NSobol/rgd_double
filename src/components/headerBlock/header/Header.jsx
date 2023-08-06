@@ -3,7 +3,8 @@ import { Logo } from './../logo/Logo';
 import { Menu } from './../menu/Menu';
 import s from './header.module.css';
 import { useLocation } from 'react-router-dom';
-import { SearchForm } from '../../searchForm/SearchForm';
+import { SearchForm } from './../../searchForm/SearchForm';
+import {SearchFormNew } from './../../searchFormNew/SearchFormNew'
 
 export const Header = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ export const Header = () => {
     default:
       activeClass = 'header';
       activeLocation = 'progress';
-      type = 'searchNew';
+      // type = 'searchNew';
       break;
   }
 
@@ -53,7 +54,7 @@ export const Header = () => {
           <h1 className={s['headerFinal-title']}>Благодарим Вас за заказ!</h1>
         </div>
       )}
-      {activeLocation === 'progress' && <SearchForm type={type} />}
+      {activeLocation === 'progress' && <SearchFormNew />}
     </div>
   );
 };

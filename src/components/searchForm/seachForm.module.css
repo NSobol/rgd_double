@@ -122,6 +122,7 @@
   border-color: #ffa800;
   margin-top: 32px;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .form-button:hover {

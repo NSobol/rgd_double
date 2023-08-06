@@ -118,6 +118,7 @@
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .contacts-subscribe > button:hover {
