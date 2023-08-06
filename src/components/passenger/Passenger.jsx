@@ -7,8 +7,11 @@ import { useForm } from 'react-hook-form';
 
 export const Passenger = ({ index }) => {
   const [opened, setOpened] = useState(false);
+  const [checked, setChecked] = useState(false);
   const isTitleActive = opened ? 'active' : 'accordionTitle';
   const isActive = opened ? 'content show' : 'content';
+  const isChecked = checked ? 'passenger-type-checked' : 'passenger-type-check';
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -25,7 +28,7 @@ export const Passenger = ({ index }) => {
         {opened && <Clouse onClick={() => setOpened(!opened)} />}
       </div>
       <div className={s[`${isActive}`]}>
-        <form id='formPassenger' onSubmit={handleSubmit(onSubmit)}>
+        <div id='formPassenger' onSubmit={handleSubmit(onSubmit)}>
           <div>
             <select name='' id='' className={s.selectAge}>
               <option value='Взрослый'>Взрослый</option>
@@ -115,14 +118,15 @@ export const Passenger = ({ index }) => {
               />
             </div>
 
-            <div className={s['passenger-type']}>
+            <div className={s['passenger-type']} onChange={() => setChecked(!checked)}>
               <input
-                className={s['passenger-type-check']}
+                className={s[`${isChecked}`]}
                 type='checkbox'
                 name='limited_mobility'
                 id='limited_mobility'
                 value='Ограниченная подвижность'
-                {...register('limited_mobility')}
+                // {...register('limited_mobility')}
+                checked={checked}
               />
               <label
                 htmlFor='limited_mobility'
@@ -132,7 +136,7 @@ export const Passenger = ({ index }) => {
               </label>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
