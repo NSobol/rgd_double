@@ -1,25 +1,104 @@
-.header {
+.info {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding: 5px 15px;
-  background-color: #ffa80070;
+  align-items: flex-start;
+}
+
+.coachNumberContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffd98f;
+  padding: 30px 60px 50px 30px;
+}
+
+.coachNumberBig {
   color: #292929;
+  font-family: Roboto;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+.coachNumberText {
+  color: #292929;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.seatsQuantityContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 25px;
+}
+
+.blockSubtitle {
+  color: #928f94;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
 }
 
-.coach-numbers {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
+.blockText {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
 }
 
-.coach-number {
-  color: #292929;
+.seatsQuantityBig {
+  color: #000000;
   font-family: Roboto;
   font-size: 24px;
   font-weight: 700;
-  cursor: pointer;
+}
+
+.seatsQuantitySmall {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.priceSeatsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 25px;
+}
+
+.priceSeats {
+  color: #000000;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.currency {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 25px;
+}
+
+.options {
+  display: flex;
+  gap: 13px;
+}
+
+.option {
+  width: 36px;
+  height: 36px;
 }

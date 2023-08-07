@@ -9,6 +9,7 @@ import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelec
 import { useNavigate } from 'react-router';
 import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 import { Coach } from '../../components/coach/coach';
+import { CoachSelector } from '../../components/coachSelector/CoachSelector';
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
@@ -19,12 +20,13 @@ export const TicketsPage = () => {
   };
   const {
     currentRoute,
-    departureCoach,
+    departureCoaches,
     departureCoachType,
-    departureFilteredCoach,
-    arrivalCoach,
+    departureFilteredCoaches,
+    departureSelectedCoaches,
+    arrivalCoaches,
     arrivalCoachType,
-    arrivalFilteredCoach,
+    arrivalFilteredCoaches,
   } = useSelector((s) => s.trains);
 
   useEffect(() => {
@@ -40,15 +42,14 @@ export const TicketsPage = () => {
           <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
           <TicketsQuantity />
           <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
-          {!!departureCoach.length &&
-            departureCoach.map(({ coach }, i) => (
-              <div key={i}>
-                <p>{coach.name}</p>
-                <p>{coach.class_type}</p>
-              </div>
+          {!!departureFilteredCoaches.length && !!departureCoachType && (
+            <CoachSelector coaches={departureFilteredCoaches} direction={'departure'} />
+          )}
+          {!!departureSelectedCoaches.length &&
+            !!departureCoachType &&
+            departureSelectedCoaches.map((coach, i) => (
+              <Coach coach={coach} key={`${i}departureSelectedCoaches`} />
             ))}
-          <hr />
-          {!!departureFilteredCoach.length && !!departureCoachType && <Coach coach={departureFilteredCoach} />}
           {currentRoute.arrival && (
             <>
               <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
@@ -56,23 +57,25 @@ export const TicketsPage = () => {
               <CoachTypeSelect routeInfo={currentRoute.arrival} direction={'arrival'} />
             </>
           )}
-          {!!arrivalCoach.length &&
-            arrivalCoach.map(({ coach }, i) => (
-              <div key={i}>
+          {!!arrivalCoaches.length &&
+            arrivalCoaches.map(({ coach }, i) => (
+              <div key={`${i}arrivalCoaches`}>
                 <p>{coach.name}</p>
                 <p>{coach.class_type}</p>
               </div>
             ))}
           <hr />
-          {!!arrivalFilteredCoach.length &&
+          {!!arrivalFilteredCoaches.length &&
             !!arrivalCoachType &&
-            arrivalFilteredCoach.map(({ coach }, i) => (
+            arrivalFilteredCoaches.map(({ coach }, i) => (
               <div key={i}>
                 <p>{coach.name}</p>
                 <p>{coach.class_type}</p>
               </div>
             ))}
-          <button className={s['ticketsFull-button'] } onClick={getTransition}>Далее</button>
+          <button className={s['ticketsFull-button']} onClick={getTransition}>
+            Далее
+          </button>
         </div>
       </div>
     </div>
