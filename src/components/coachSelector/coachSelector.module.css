@@ -1,0 +1,17 @@
+.coachSelector {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 15px;
+  background-color: #ffa80070;
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.coachNumbers {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
