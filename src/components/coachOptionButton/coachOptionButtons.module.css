@@ -1,0 +1,39 @@
+.options {
+  display: flex;
+  gap: 13px;
+}
+
+.optionButton {
+ cursor: pointer;
+}
+
+.optionButton:hover {
+ fill: #FFA800;
+}
+
+.selected {
+  fill: #FFA800;
+}
+
+.selected > rect {
+  stroke: none;
+}
+
+.selected > path {
+  fill: #F4F2F6;
+}
+
+.includes {
+  fill: #FFA800;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.includes > rect {
+  stroke: none;
+}
+
+.includes > path {
+  opacity: 0.7;
+  fill: #F4F2F6;
+}

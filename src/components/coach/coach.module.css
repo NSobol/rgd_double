@@ -92,13 +92,3 @@
   gap: 20px;
   padding-top: 25px;
 }
-
-.options {
-  display: flex;
-  gap: 13px;
-}
-
-.option {
-  width: 36px;
-  height: 36px;
-}
