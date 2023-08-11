@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 import { Coach } from '../../components/coach/coach';
 import { CoachSelector } from '../../components/coachSelector/CoachSelector';
-import { CoachScheme } from '../../components/coachScheme/CoachScheme';
+
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
@@ -49,10 +49,7 @@ export const TicketsPage = () => {
           {!!departureSelectedCoaches.length &&
             !!departureCoachType &&
             departureSelectedCoaches.map((coach, i) => (
-              <>
               <Coach coach={coach} key={`${i}departureSelectedCoaches`} />
-              <CoachScheme coach={coach} />
-              </>
             ))}
           {/* {currentRoute.arrival && (
             <>
