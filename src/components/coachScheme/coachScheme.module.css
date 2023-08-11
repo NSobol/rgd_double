@@ -1,0 +1,312 @@
+:root {
+  --wall: 0.4%;
+  --bed: 2.8%;
+  --gap: 2%;
+}
+
+.schemeContainer {
+  position: relative;
+  width: 100%;
+  height: 162px;
+}
+
+.gridWrapper {
+  position: relative;
+  padding-bottom: 16.2%;
+}
+
+.firstClassGrid {
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../images/First_class_scheme.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 12.6% var(--wall) repeat(8, var(--bed) var(--gap) var(--gap) var(--bed) var(--wall));
+  grid-template-rows: 3% 58%;
+  grid-template-areas:
+    '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+    '. . seat1 . . seat2 . seat3 . . seat4 . seat5 . . seat6 . seat7 . . seat8 . seat9 . . seat10 . seat11 . . seat12 . seat13 . . seat14 . seat15 . . seat16 .'
+    ;
+}
+
+.secondClassGrid {
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../images/Second_class_scheme.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 12.6% var(--wall) repeat(8, var(--bed) var(--gap) var(--gap) var(--bed) var(--wall));
+  grid-template-rows: 3% 29% 29%;
+  grid-template-areas:
+    '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+    '. . seat2 . . seat4 . seat6 . . seat8 . seat10 . . seat12 . seat14 . . seat16 . seat18 . . seat20 . seat22 . . seat24 . seat26 . . seat28 . seat30 . . seat32 .'
+    '. . seat1 . . seat3 . seat5 . . seat7 . seat9 . . seat11 . seat13 . . seat15 . seat17 . . seat19 . seat21 . . seat23 . seat25 . . seat27 . seat29 . . seat31 .'
+    ;
+}
+
+.thirdClassGrid {
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../images/Third_class_scheme_Final.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 12.6% var(--wall) repeat(8, var(--bed) var(--gap) var(--gap) var(--bed) var(--wall));
+  grid-template-rows: 3% 29% 29% 19% 17%;
+  grid-template-areas:
+    '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+    '. . seat2 . . seat4 . seat6 . . seat8 . seat10 . . seat12 . seat14 . . seat16 . seat18 . . seat20 . seat22 . . seat24 . seat26 . . seat28 . seat30 . . seat32 .'
+    '. . seat1 . . seat3 . seat5 . . seat7 . seat9 . . seat11 . seat13 . . seat15 . seat17 . . seat19 . seat21 . . seat23 . seat25 . . seat27 . seat29 . . seat31 .'
+    '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+    '. . seat33 seat33 seat34 seat34 . seat35 seat35 seat36 seat36 . seat37 seat37 seat38 seat38 . seat39 seat39 seat40 seat40 . seat41 seat41 seat42 seat42 . seat43 seat43 seat44 seat44 . seat45 seat45 seat46 seat46 . seat47 seat47 seat48 seat48 .'
+    ;
+}
+
+.fourthClassGrid {
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../images/Fourth_class_scheme.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 15.2% repeat(16, var(--bed) var(--gap));
+  grid-template-rows: 7% 12% 7% 12% 25% 12% 6% 12%;
+  grid-template-areas:
+  '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+  '. seat2 . seat4 . seat6 . seat8 . seat10 . seat12 . seat14 . seat16 . seat18 . seat20 . seat22 . seat24 . seat26 . seat28 . seat30 . seat32 . .'
+  '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+  '. seat1 . seat3 . seat5 . seat7 . seat9 . seat11 . seat13 . seat15 . seat17 . seat19 . seat21 . seat23 . seat25 . seat27 . seat29 . seat31 . .'
+  '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+  '. . . seat34 . seat36 . seat38 . seat40 . seat42 . seat44 . seat46 . seat48 . seat50 . seat52 . seat54 . seat56 . seat58 . seat60 . . . .'
+  '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .'
+  '. seat33 . seat35 . seat37 . seat39 . seat41 . seat43 . seat45 . seat47 . seat49 . seat51 . seat53 . seat55 . seat57 . seat59 . seat61 . seat62 . .'
+  ;
+}
+
+.scheme {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+  position: absolute;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  top: 36px;
+  left: 139px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #FFA800;
+}
+
+.seat1 {
+  grid-area: seat1;
+}
+.seat2 {
+  grid-area: seat2;
+}
+.seat3 {
+  grid-area: seat3;
+}
+.seat4 {
+  grid-area: seat4;
+}
+.seat5 {
+  grid-area: seat5;
+}
+.seat6 {
+  grid-area: seat6;
+}
+.seat7 {
+  grid-area: seat7;
+}
+.seat8 {
+  grid-area: seat8;
+}
+.seat9 {
+  grid-area: seat9;
+}
+.seat10 {
+  grid-area: seat10;
+}
+.seat11 {
+  grid-area: seat11;
+}
+.seat12 {
+  grid-area: seat12;
+}
+.seat13 {
+  grid-area: seat13;
+}
+.seat14 {
+  grid-area: seat14;
+}
+.seat15 {
+  grid-area: seat15;
+}
+.seat16 {
+  grid-area: seat16;
+}
+.seat17 {
+  grid-area: seat17;
+}
+.seat18 {
+  grid-area: seat18;
+}
+.seat19 {
+  grid-area: seat19;
+}
+.seat20 {
+  grid-area: seat20;
+}
+.seat21 {
+  grid-area: seat21;
+}
+.seat22 {
+  grid-area: seat22;
+}
+.seat23 {
+  grid-area: seat23;
+}
+.seat24 {
+  grid-area: seat24;
+}
+.seat25 {
+  grid-area: seat25;
+}
+.seat26 {
+  grid-area: seat26;
+}
+.seat27 {
+  grid-area: seat27;
+}
+.seat28 {
+  grid-area: seat28;
+}
+.seat29 {
+  grid-area: seat29;
+}
+.seat30 {
+  grid-area: seat30;
+}
+.seat31 {
+  grid-area: seat31;
+}
+.seat32 {
+  grid-area: seat32;
+}
+.seat33 {
+  grid-area: seat33;
+}
+.seat34 {
+  grid-area: seat34;
+}
+.seat35 {
+  grid-area: seat35;
+}
+.seat36 {
+  grid-area: seat36;
+}
+.seat37 {
+  grid-area: seat37;
+}
+.seat38 {
+  grid-area: seat38;
+}
+.seat39 {
+  grid-area: seat39;
+}
+.seat40 {
+  grid-area: seat40;
+}
+.seat41 {
+  grid-area: seat41;
+}
+.seat42 {
+  grid-area: seat42;
+}
+.seat43 {
+  grid-area: seat43;
+}
+.seat44 {
+  grid-area: seat44;
+}
+.seat45 {
+  grid-area: seat45;
+}
+.seat46 {
+  grid-area: seat46;
+}
+.seat47 {
+  grid-area: seat47;
+}
+.seat48 {
+  grid-area: seat48;
+}
+.seat49 {
+  grid-area: seat49;
+}
+.seat50 {
+  grid-area: seat50;
+}
+.seat51 {
+  grid-area: seat51;
+}
+.seat52 {
+  grid-area: seat52;
+}
+.seat53 {
+  grid-area: seat53;
+}
+.seat54 {
+  grid-area: seat54;
+}
+.seat55 {
+  grid-area: seat55;
+}
+.seat56 {
+  grid-area: seat56;
+}
+.seat57 {
+  grid-area: seat57;
+}
+.seat58 {
+  grid-area: seat58;
+}
+.seat59 {
+  grid-area: seat59;
+}
+.seat60 {
+  grid-area: seat60;
+}
+.seat61 {
+  grid-area: seat61;
+}
+.seat62 {
+  grid-area: seat62;
+}

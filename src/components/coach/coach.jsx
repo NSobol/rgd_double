@@ -62,7 +62,7 @@ export const Coach = ({ coach }) => {
         </div>
         <div className={s['optionsContainer']}>
           <span className={s['blockSubtitle']}>Обслуживание ФПК</span>
-          <CoachOptionButtons />
+          <CoachOptionButtons coachInfo={coach.coach} />
         </div>
       </div>
     </div>
