@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './coach.module.css';
 import { CoachOptionButtons } from '../coachOptionButton/CoachOptionButtons';
+import { CoachScheme } from '../../components/coachScheme/CoachScheme';
 
 export const Coach = ({ coach }) => {
-  
   const getTopSeats = (coach) => {
     return coach.seats.reduce((sum, seat) => {
       if (seat.available && seat.index % 2 === 0) {
@@ -65,6 +65,7 @@ export const Coach = ({ coach }) => {
           <CoachOptionButtons coachInfo={coach.coach} />
         </div>
       </div>
+      <CoachScheme coach={coach} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './coachScheme.module.css';
 import cn from 'classnames';
+import { Seat } from '../Seat/Seat';
 
 export const CoachScheme = ({ coach }) => {
   const fillSeatsArray = (seatsArray, size) => {
@@ -32,12 +33,7 @@ export const CoachScheme = ({ coach }) => {
         break;
     }
     return filledSeatsArray.map((seat, i) => (
-      <button
-        className={cn(s['button'], s[`seat${seat.index}`])}
-        key={`${coach.coach.name}seat${i}`}
-      >
-        {seat.index}
-      </button>
+      <Seat seat={seat} key={`${coach.coach.name}seat${i}`} />
     ));
   };
 
