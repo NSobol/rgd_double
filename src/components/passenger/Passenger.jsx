@@ -5,7 +5,7 @@ import { ReactComponent as Minus } from './../../images/minusCircle.svg';
 import s from './passenger.module.css';
 import { PassengerForm } from '../passengerForm/passengerForm';
 
-export const Passenger = ({ index, id }) => {
+export const Passenger = ({ index, id, test }) => {
   const [opened, setOpened] = useState(false);
   const isTitleActive = opened ? 'active' : 'accordionTitle';
   const isActive = opened ? 'content show' : 'content';
@@ -22,7 +22,7 @@ export const Passenger = ({ index, id }) => {
         )}
       </div>
       <div className={s[`${isActive}`]}>
-        <PassengerForm />
+        <PassengerForm test={test} />
       </div>
     </div>
   );

@@ -10,6 +10,9 @@ export const PassengersList = () => {
   const getTransition = () => {
     navigate('/payment');
   };
+  const test = (data) => {
+    console.log(data);
+  } 
 
   return (
     <div>
@@ -20,6 +23,7 @@ export const PassengersList = () => {
             index={i}
             item={item}
             id={`pass${i}`}
+            test={test}
           />
         ))}
       </div>
