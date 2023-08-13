@@ -42,10 +42,18 @@ const initialState = {
   departureCoachType: '',
   departureFilteredCoaches: [],
   departureSelectedCoaches: [],
+  departure: {
+    route_direction_id: '',
+    seats: [],
+  },
   arrivalCoaches: [],
   arrivalCoachType: '',
   arrivalFilteredCoaches: [],
   arrivalSelectedCoaches: [],
+  arrival: {
+    route_direction_id: '',
+    seats: [],
+  },
 };
 
 // actions ----------------------------------------------------
@@ -122,6 +130,16 @@ const trains = createSlice({
         state[`${payload.direction}SelectedCoaches`] = [...state[`${payload.direction}SelectedCoaches`], payload.coach];
       }
     },
+    setSelectedSeat(state, {payload}) {
+      if (state[payload.direction].seats.find(seat => seat.coach_id === payload.seat.coach_id && seat.seat_number === payload.seat.seat_number)) {
+        state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.seat_number !== payload.seat.seat_number || seat.coach_id !== payload.seat.coach_id)
+      } else {
+        state[payload.direction].seats.push(payload.seat)
+      }
+    },
+    resetSelectedSeats(state, {payload}){
+      state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.coach_id !== payload.coach_id)
+    },
     resetCoachType(state, action) {
       state.departureCoaches = [];
       state.departureCoachType = '';
@@ -161,5 +179,7 @@ export const {
   setCoachType,
   resetCoachType,
   setSelectedCoaches,
+  setSelectedSeat,
+  resetSelectedSeats,
 } = trains.actions;
 export default trains.reducer;
