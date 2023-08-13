@@ -14,8 +14,6 @@ export const CoachOptionButtons = ({coachInfo}) => {
     linens: '',
   });
 
-  console.log('coachInfo', coachInfo);
-
   const handleSelect = (option) => {
     if (selected[option] === 'includes') {
       return;
