@@ -3,7 +3,7 @@ import s from './coach.module.css';
 import { CoachOptionButtons } from '../coachOptionButton/CoachOptionButtons';
 import { CoachScheme } from '../../components/coachScheme/CoachScheme';
 import { useDispatch } from 'react-redux';
-import { resetSelectedSeats, setSelectedSeat } from '../../storage/slices/orderSlice';
+import { resetSelectedSeats, setSelectedSeat } from '../../storage/slices/trainSlice';
 
 export const Coach = ({ coach, direction }) => {
   const dispatch = useDispatch();

@@ -10,28 +10,32 @@ import { useNavigate } from 'react-router';
 import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 import { Coach } from '../../components/coach/coach';
 import { CoachSelector } from '../../components/coachSelector/CoachSelector';
-import { setRouteDirectionId } from '../../storage/slices/orderSlice';
+import { setSeatsInfo } from '../../storage/slices/orderSlice';
 
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const getTransition = () => {
-    navigate('/stepthree');
-  };
+
   const {
     currentRoute,
     departureCoachType,
     departureFilteredCoaches,
     departureSelectedCoaches,
+    departure,
     arrivalCoachType,
     arrivalFilteredCoaches,
     arrivalSelectedCoaches,
+    arrival,
   } = useSelector((s) => s.trains);
+
+  const getTransition = () => {
+    dispatch(setSeatsInfo({currentRoute, departure, arrival}))
+    navigate('/stepthree');
+  };
 
   useEffect(() => {
     dispatch(getCoach(currentRoute));
-    dispatch(setRouteDirectionId(currentRoute));
   }, [dispatch, currentRoute]);
 
   return (
