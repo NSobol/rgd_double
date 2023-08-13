@@ -15,7 +15,7 @@ export const OrderInfo = () => {
   const currentRoute = useSelector((s) => s.trains.currentRoute);
   const order = useSelector((s) => s.order);
   console.log(order);
-
+ const payment = order.user.payment_method;
   const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
@@ -89,7 +89,7 @@ export const OrderInfo = () => {
         <h2 className={s['block-title']}>Способ оплаты</h2>
         <div className={s['block-content']}>
           <div className={s['block-content-main']}>
-            <span className={s['block-content-main-text']}>Наличными</span>
+            <span className={s['block-content-main-text']}>{payment}</span>
           </div>
           <div className={s['block-content-footer']}>
             <button className={s['footer-button-new']}>Изменить</button>

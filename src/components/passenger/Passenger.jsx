@@ -5,10 +5,12 @@ import { ReactComponent as Minus } from './../../images/minusCircle.svg';
 import s from './passenger.module.css';
 import { PassengerForm } from '../passengerForm/passengerForm';
 
-export const Passenger = ({ index, id, test }) => {
+export const Passenger = ({ index, id, test, item }) => {
   const [opened, setOpened] = useState(false);
   const isTitleActive = opened ? 'active' : 'accordionTitle';
   const isActive = opened ? 'content show' : 'content';
+
+  console.log(item);
 
   return (
     <div id={id} className={s.accordionItem}>
@@ -22,7 +24,7 @@ export const Passenger = ({ index, id, test }) => {
         )}
       </div>
       <div className={s[`${isActive}`]}>
-        <PassengerForm test={test} />
+        <PassengerForm test={test} info={item.person_info} />
       </div>
     </div>
   );

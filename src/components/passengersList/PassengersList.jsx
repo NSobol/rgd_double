@@ -4,7 +4,40 @@ import { Passenger } from '../passenger/Passenger';
 import { useNavigate } from 'react-router';
 
 export const PassengersList = () => {
-  const tickets = [1, 2];
+  const tickets = [
+    {
+      coach_id: '641037ec5c49ea004632f165',
+      person_info: {
+        is_adult: true,
+        first_name: 'Андрей',
+        last_name: 'Каптурин',
+        patronymic: 'Алексеевич',
+        gender: true,
+        birthday: 'string',
+        document_type: 'string',
+        document_data: 'string',
+      },
+      seat_number: 23,
+      is_child: false,
+      include_children_seat: true,
+    },
+    {
+      coach_id: '641037ec5c49ea004632f165',
+      person_info: {
+        is_adult: false,
+        first_name: 'Андрей',
+        last_name: 'Каптурин',
+        patronymic: 'Алексеевич',
+        gender: true,
+        birthday: 'string',
+        document_type: 'string',
+        document_data: 'string',
+      },
+      seat_number: 22,
+      is_child: true,
+      include_children_seat: false,
+    },
+  ];
   const navigate = useNavigate();
 
   const getTransition = () => {
@@ -12,7 +45,7 @@ export const PassengersList = () => {
   };
   const test = (data) => {
     console.log(data);
-  } 
+  };
 
   return (
     <div>

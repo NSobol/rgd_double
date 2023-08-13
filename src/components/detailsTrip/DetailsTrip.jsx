@@ -52,27 +52,31 @@ export const DetailsTrip = () => {
         </div>
       </div>
 
+      {details.arrival && (
+        <div className={s['block-container']}>
+          <div className={s['block-container-header']}>
+            <div className={s['block']}>
+              <Back />
+              <p className={s['block-there']}>Обратно</p>
+              <span className={s['block-there-date']}>
+                {getDateStr(new Date(details.arrival.from.datetime * 1000))}
+              </span>
+            </div>
+            <div onClick={() => setOpened(!opened)}>
+              {opened ? <Minus /> : <Plus />}
+            </div>
+          </div>
+        </div>
+      )}
       <div className={s['block-container']}>
-      <div className={s['block-container-header']}>
-        <div className={s['block']}>
-          <Back />
-          <p className={s['block-there']}>Обратно</p>
-          <span className={s['block-there-date']}>
-              {getDateStr(new Date(details?.arrival.from.datetime * 1000))}
-            </span>
-        </div>
-        <div onClick={() => setOpened(!opened)}>
-          {opened ? <Minus /> : <Plus />}
-        </div>
-        </div>
-      </div>
-      <div className={s['block-container']}>
-      <div className={s['block-container-header']}>
-        <div className={s['block']}>
-          <User />
-          <p className={s['block-there']}>Пассажиры</p>
-        </div>
-        <div onClick={() => setShow(!show)}>{show ? <Minus /> : <Plus />}</div>
+        <div className={s['block-container-header']}>
+          <div className={s['block']}>
+            <User />
+            <p className={s['block-there']}>Пассажиры</p>
+          </div>
+          <div onClick={() => setShow(!show)}>
+            {show ? <Minus /> : <Plus />}
+          </div>
         </div>
       </div>
       <div className={s.footer}>
