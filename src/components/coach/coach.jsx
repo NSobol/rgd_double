@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import s from './coach.module.css';
 import { CoachOptionButtons } from '../coachOptionButton/CoachOptionButtons';
 import { CoachScheme } from '../../components/coachScheme/CoachScheme';
