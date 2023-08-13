@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './coach.module.css';
 import { CoachOptionButtons } from '../coachOptionButton/CoachOptionButtons';
 import { CoachScheme } from '../../components/coachScheme/CoachScheme';
+import { useDispatch } from 'react-redux';
+import { resetSelectedSeats, setSelectedSeat } from '../../storage/slices/orderSlice';
 
-export const Coach = ({ coach }) => {
+export const Coach = ({ coach, direction }) => {
+  const dispatch = useDispatch();
+
+  const setSeat = (seat_number) => {
+    dispatch(setSelectedSeat({direction, seat: {coach_id: coach.coach._id, seat_number}}))
+  };
+
+  useEffect(() => {
+    return () => dispatch(resetSelectedSeats({direction, coach_id: coach.coach._id}));
+  }, [dispatch, direction, coach.coach._id])
+
   const getTopSeats = (coach) => {
     return coach.seats.reduce((sum, seat) => {
       if (seat.available && seat.index % 2 === 0) {
@@ -65,7 +77,7 @@ export const Coach = ({ coach }) => {
           <CoachOptionButtons coachInfo={coach.coach} />
         </div>
       </div>
-      <CoachScheme coach={coach} />
+      <CoachScheme coach={coach} setSeat={setSeat} />
     </div>
   );
 };

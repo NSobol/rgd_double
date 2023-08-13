@@ -45,6 +45,7 @@ const initialState = {
   arrivalCoaches: [],
   arrivalCoachType: '',
   arrivalFilteredCoaches: [],
+  arrivalSelectedCoaches: [],
 };
 
 // actions ----------------------------------------------------
@@ -116,11 +117,9 @@ const trains = createSlice({
           (el) => el?.coach?._id === payload.coach.coach._id
         )
       ) {
-        state[`${payload.direction}SelectedCoaches`] = state[
-          `${payload.direction}SelectedCoaches`
-        ].filter((el) => el?.coach?._id !== payload.coach.coach._id);
+        state[`${payload.direction}SelectedCoaches`] = state[`${payload.direction}SelectedCoaches`].filter((el) => el?.coach?._id !== payload.coach.coach._id);
       } else {
-        state[`${payload.direction}SelectedCoaches`].push(payload.coach);
+        state[`${payload.direction}SelectedCoaches`] = [...state[`${payload.direction}SelectedCoaches`], payload.coach];
       }
     },
     resetCoachType(state, action) {

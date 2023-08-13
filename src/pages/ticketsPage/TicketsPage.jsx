@@ -10,28 +10,28 @@ import { useNavigate } from 'react-router';
 import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
 import { Coach } from '../../components/coach/coach';
 import { CoachSelector } from '../../components/coachSelector/CoachSelector';
+import { setRouteDirectionId } from '../../storage/slices/orderSlice';
 
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const getTransition = () => {
     navigate('/stepthree');
   };
   const {
     currentRoute,
-    departureCoaches,
     departureCoachType,
     departureFilteredCoaches,
     departureSelectedCoaches,
-    arrivalCoaches,
     arrivalCoachType,
     arrivalFilteredCoaches,
+    arrivalSelectedCoaches,
   } = useSelector((s) => s.trains);
 
   useEffect(() => {
     dispatch(getCoach(currentRoute));
+    dispatch(setRouteDirectionId(currentRoute));
   }, [dispatch, currentRoute]);
 
   return (
@@ -48,32 +48,22 @@ export const TicketsPage = () => {
           )}
           {!!departureSelectedCoaches.length &&
             !!departureCoachType &&
-            departureSelectedCoaches.map((coach, i) => (
-              <Coach coach={coach} key={`${i}departureSelectedCoaches`} />
+            departureSelectedCoaches.map((coach) => (
+              <Coach coach={coach} key={coach.coach._id} direction={'departure'} />
             ))}
-          {/* {currentRoute.arrival && (
+          {currentRoute.arrival && (
             <>
               <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
               <TicketsQuantity />
               <CoachTypeSelect routeInfo={currentRoute.arrival} direction={'arrival'} />
             </>
           )}
-          {!!arrivalCoaches.length &&
-            arrivalCoaches.map(({ coach }, i) => (
-              <div key={`${i}arrivalCoaches`}>
-                <p>{coach.name}</p>
-                <p>{coach.class_type}</p>
-              </div>
-            ))}
-          <hr />
-          {!!arrivalFilteredCoaches.length &&
+          {!!arrivalFilteredCoaches.length && !!arrivalCoachType && <CoachSelector coaches={arrivalFilteredCoaches} direction={'arrival'} />}
+          {!!arrivalSelectedCoaches.length &&
             !!arrivalCoachType &&
-            arrivalFilteredCoaches.map(({ coach }, i) => (
-              <div key={i}>
-                <p>{coach.name}</p>
-                <p>{coach.class_type}</p>
-              </div>
-            ))} */}
+            arrivalSelectedCoaches.map((coach) => (
+              <Coach coach={coach} key={coach.coach._id} direction={'arrival'} />
+            ))}
           <button className={s['ticketsFull-button']} onClick={getTransition}>
             Далее
           </button>

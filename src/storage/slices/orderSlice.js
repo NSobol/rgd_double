@@ -13,78 +13,12 @@ const initialState = {
     payment_method: '',
   },
   departure: {
-    route_direction_id: '64103b2f5c49ea0046358ef8',
-    seats: [
-      {
-        coach_id: '641037ec5c49ea004632f165',
-        person_info: {
-          is_adult: true,
-          first_name: 'Андрей',
-          last_name: 'Каптурин',
-          patronymic: 'Алексеевич',
-          gender: true,
-          birthday: 'string',
-          document_type: 'string',
-          document_data: 'string',
-        },
-        seat_number: 23,
-        is_child: false,
-        include_children_seat: true,
-      },
-      {
-        coach_id: '641037ec5c49ea004632f165',
-        person_info: {
-          is_adult: false,
-          first_name: 'Андрей',
-          last_name: 'Каптурин',
-          patronymic: 'Алексеевич',
-          gender: true,
-          birthday: 'string',
-          document_type: 'string',
-          document_data: 'string',
-        },
-        seat_number: 22,
-        is_child: true,
-        include_children_seat: false,
-      },
-    ],
+    route_direction_id: '',
+    seats: [],
   },
   arrival: {
-    route_direction_id: '64103b2f5c49ea0046358ef8',
-    seats: [
-      {
-        coach_id: '641037ec5c49ea004632f165',
-        person_info: {
-          is_adult: true,
-          first_name: 'Андрей',
-          last_name: 'Каптурин',
-          patronymic: 'Алексеевич',
-          gender: true,
-          birthday: 'string',
-          document_type: 'string',
-          document_data: 'string',
-        },
-        seat_number: 23,
-        is_child: false,
-        include_children_seat: true,
-      },
-      {
-        coach_id: '641037ec5c49ea004632f165',
-        person_info: {
-          is_adult: false,
-          first_name: 'Андрей',
-          last_name: 'Каптурин',
-          patronymic: 'Алексеевич',
-          gender: true,
-          birthday: 'string',
-          document_type: 'string',
-          document_data: 'string',
-        },
-        seat_number: 22,
-        is_child: true,
-        include_children_seat: false,
-      },
-    ],
+    route_direction_id: '',
+    seats: [],
   },
 };
 
@@ -98,8 +32,24 @@ const order = createSlice({
     setOrderNumber(state, action) {
       state.order_number = action.payload;
     },
+    setSelectedSeat(state, {payload}) {
+      if (state[payload.direction].seats.find(seat => seat.coach_id === payload.seat.coach_id && seat.seat_number === payload.seat.seat_number)) {
+        state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.seat_number !== payload.seat.seat_number || seat.coach_id !== payload.seat.coach_id)
+      } else {
+        state[payload.direction].seats.push(payload.seat)
+      }
+    },
+    setRouteDirectionId(state, {payload}){
+      state.departure.route_direction_id = payload.departure._id
+      if (payload.arrival) {
+        state.arrival.route_direction_id = payload.arrival._id
+      }
+    },
+    resetSelectedSeats(state, {payload}){
+      state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.coach_id !== payload.coach_id)
+    }
   },
 });
 
-export const { setUser, setOrderNumber } = order.actions;
+export const { setUser, setOrderNumber, setRouteDirectionId, setSelectedSeat, resetSelectedSeats } = order.actions;
 export default order.reducer;
