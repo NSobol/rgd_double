@@ -1,0 +1,61 @@
+.notfound {
+  width: 961px;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+}
+
+.notfound-container {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 50px;
+}
+
+.smailSad {
+  width: 300px;
+  height: 300px;
+}
+
+.notText {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.notLink-container {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.notLink {
+  color: #292929;
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.notLink:hover{
+	color: #ffa800;
+	transition: all 0.5s linear;
+}
+
+.notLink:active{
+	color: #ffa800;
+	transition: all 0.5s linear;
+}
