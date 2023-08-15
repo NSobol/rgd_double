@@ -2,7 +2,7 @@ import React from 'react';
 import s from './coachScheme.module.css';
 import { Seat } from '../Seat/Seat';
 
-export const CoachScheme = ({ coach, setSeat }) => {
+export const CoachScheme = ({ coach, setSeat, direction }) => {
   const fillSeatsArray = (seatsArray, size) => {
     const filledSeatsArray = [...seatsArray];
     for (let i = seatsArray.length; i < size; i++) {
@@ -32,7 +32,7 @@ export const CoachScheme = ({ coach, setSeat }) => {
         break;
     }
     return filledSeatsArray.map((seat, i) => (
-      <Seat seat={seat} key={`${coach.coach.name}seat${i}`} setSeat={setSeat}/>
+      <Seat seat={seat} key={`${coach.coach.name}seat${i}`} setSeat={setSeat} direction={direction} />
     ));
   };
 

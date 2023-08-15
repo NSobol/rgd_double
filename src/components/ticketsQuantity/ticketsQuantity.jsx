@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import s from './ticketsQuantity.module.css';
+import { useDispatch } from 'react-redux';
+import { setSeatsQuantity } from '../../storage/slices/trainSlice';
 
-export const TicketsQuantity = () => {
-  const maxAdultTicketsCount = 5;
+export const TicketsQuantity = ({direction}) => {
+  const dispatch = useDispatch();
   const [quantityAdult, setQuantityAdult] = useState(0);
   const [quantityChildren, setQuantityChildren] = useState(0);
   const [maxQuantityChildren, setMaxQuantityChildren] = useState(0);
@@ -36,6 +38,10 @@ export const TicketsQuantity = () => {
     maxQuantityChildrenNoPlace,
   ]);
 
+  useEffect(() => {
+    dispatch(setSeatsQuantity({direction, quantity: quantityAdult + quantityChildren}))
+  }, [dispatch, direction, quantityAdult, quantityChildren])
+
   return (
     <div>
       <span className={s['title']}>Количество билетов</span>
@@ -48,14 +54,14 @@ export const TicketsQuantity = () => {
                 className={s['input']}
                 type='number'
                 min={0}
-                max={maxAdultTicketsCount}
+                max={5}
                 value={quantityAdult}
                 onChange={(e) => setQuantityAdult(Number(e.target.value))}
               />
             </div>
           </label>
           {!!quantityAdult && quantityAdult !== 5 && (
-            <span>Можно добавить еще {maxAdultTicketsCount - quantityAdult} пассажиров</span>
+            <span>Можно добавить еще {5 - quantityAdult} пассажиров</span>
           )}
           {quantityAdult === 5 && <span>Максимум 5 билетов за один заказ</span>}
         </div>

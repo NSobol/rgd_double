@@ -45,7 +45,7 @@ export const TicketsPage = () => {
         <DetailsFilter />
         <div className={s.ticketsBlock}>
           <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
-          <TicketsQuantity />
+          <TicketsQuantity direction={'departure'} />
           <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
           {!!departureFilteredCoaches.length && !!departureCoachType && (
             <CoachSelector coaches={departureFilteredCoaches} direction={'departure'} />

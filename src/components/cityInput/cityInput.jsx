@@ -20,7 +20,7 @@ export const CityInput = memo(({ placeholder, name }) => {
   );
 
   useEffect(() => {
-    if (cityName === searchParams[`${name}_name`]) {
+    if (cityName === searchParams[`${name}_name`] || cityName === '') {
       setCities([]);
       return;
     }

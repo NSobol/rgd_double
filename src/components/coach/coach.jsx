@@ -77,7 +77,7 @@ export const Coach = ({ coach, direction }) => {
           <CoachOptionButtons coachInfo={coach.coach} />
         </div>
       </div>
-      <CoachScheme coach={coach} setSeat={setSeat} />
+      <CoachScheme coach={coach} setSeat={setSeat} direction={direction} />
     </div>
   );
 };
