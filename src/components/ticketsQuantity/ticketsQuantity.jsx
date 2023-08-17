@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import s from './ticketsQuantity.module.css';
 import { useDispatch } from 'react-redux';
-import { setSeatsQuantity } from '../../storage/slices/trainSlice';
 
-export const TicketsQuantity = ({direction}) => {
+export const TicketsQuantity = ({ getTicketsQuantity }) => {
   const dispatch = useDispatch();
   const [quantityAdult, setQuantityAdult] = useState(0);
   const [quantityChildren, setQuantityChildren] = useState(0);
@@ -38,12 +37,33 @@ export const TicketsQuantity = ({direction}) => {
     maxQuantityChildrenNoPlace,
   ]);
 
+  const createTitcketInfo = (ageGroup, quantity) => {
+    if (!quantity) return [];
+    const seats = [];
+    for (let i = 0; i < quantity; i++) {
+      seats.push({
+        coach_id: '',
+        person_info: {
+          is_adult: ageGroup === 'adult' || ageGroup === 'adultWithChild',
+        },
+        seat_number: 0,
+        is_child: ageGroup === 'child',
+        include_children_seat: ageGroup === 'adultWithChild',
+      });
+    }
+    return seats;
+  }
+
   useEffect(() => {
-    dispatch(setSeatsQuantity({direction, quantity: quantityAdult + quantityChildren}))
-  }, [dispatch, direction, quantityAdult, quantityChildren])
+    getTicketsQuantity([
+      ...createTitcketInfo('adultWithChild', quantityChildrenNoPlace),
+      ...createTitcketInfo('adult', quantityAdult - quantityChildrenNoPlace),
+      ...createTitcketInfo('child', quantityChildren)
+    ]);
+  }, [dispatch, getTicketsQuantity, quantityAdult, quantityChildren, quantityChildrenNoPlace]);
 
   return (
-    <div>
+    <div className={s['ticketsQuantity']}>
       <span className={s['title']}>Количество билетов</span>
       <div className={s['ticketsQuantityContainer']}>
         <div className={s['ticketSelector-container']}>
