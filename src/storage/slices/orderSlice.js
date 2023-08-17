@@ -34,10 +34,10 @@ const order = createSlice({
     },
     setSeatsInfo(state, {payload}){
       state.departure.route_direction_id = payload.currentRoute.departure._id
-      state.departure.seats = payload.departure.seats
+      state.departure.seats = payload.departureSeats
       if (payload.currentRoute.arrival) {
         state.arrival.route_direction_id = payload.currentRoute.arrival._id
-        state.arrival.seats = payload.arrival.seats
+        state.arrival.seats = payload.arrivalSeats
       }
     },
   },

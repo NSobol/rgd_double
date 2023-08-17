@@ -1,42 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCoach } from '../../storage/slices/trainSlice';
 import { RouteDetails } from '../../components/routeDetails/routeDetails';
 import { TicketsQuantity } from '../../components/ticketsQuantity/ticketsQuantity';
+import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelect';
+import { CoachSelector } from '../../components/coachSelector/CoachSelector';
+import { Coach} from '../../components/coach/coach';
 import s from './tickets.module.css';
 import { Crumbs } from '../../components/crumbs/Crumbs';
-import { CoachTypeSelect } from '../../components/coachTypeSelect/coachTypeSelect';
-import { useNavigate } from 'react-router';
 import { DetailsFilter } from '../../components/detailsFilter/DetailsFilter';
-import { Coach } from '../../components/coach/coach';
-import { CoachSelector } from '../../components/coachSelector/CoachSelector';
+import { useNavigate } from 'react-router-dom';
 import { setSeatsInfo } from '../../storage/slices/orderSlice';
-
 
 export const TicketsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {
-    currentRoute,
-    departureCoachType,
-    departureFilteredCoaches,
-    departureSelectedCoaches,
-    departure,
-    arrivalCoachType,
-    arrivalFilteredCoaches,
-    arrivalSelectedCoaches,
-    arrival,
-  } = useSelector((s) => s.trains);
+  const { currentRoute, departureCoaches, arrivalCoaches } = useSelector((s) => s.trains);
 
-  const getTransition = () => {
-    dispatch(setSeatsInfo({currentRoute, departure, arrival}))
+  const [departureSeats, setDepartureSeats] = useState([]);
+  const [departureCoachType, setDepartureCoachType] = useState('');
+  const [departureFilteredCoaches, setDepartureFilteredCoaches] = useState([]);
+  const [departureSelectedCoaches, setDepartureSelectedCoaches] = useState([]);
+  const [arrivalSeats, setArrivalSeats] = useState([]);
+  const [arrivalCoachType, setArrivalCoachType] = useState('');
+  const [arrivalFilteredCoaches, setArrivalFilteredCoaches] = useState([]);
+  const [arrivalSelectedCoaches, setArrivalSelectedCoaches] = useState([]);
+
+console.log('departureSeats', departureSeats);
+
+const getTransition = () => {
+  if((departureSeats.find(el => el.coach_id === '' || el.seat_number === 0)) || arrivalSeats.find(el => el.coach_id === '' || el.seat_number === 0)) {
+    alert('Количество билетов превышает количество выбранных мест')
+  } else {
+    dispatch(setSeatsInfo({currentRoute, departureSeats, arrivalSeats}))
     navigate('/stepthree');
-  };
+  }
+};
 
-  useEffect(() => {
-    dispatch(getCoach(currentRoute));
-  }, [dispatch, currentRoute]);
+useEffect(() => {
+  dispatch(getCoach(currentRoute));
+}, [dispatch, currentRoute]);
+
+useEffect(() => {
+  if (!departureCoachType) return
+    setDepartureFilteredCoaches(departureCoaches.filter(el => el.coach.class_type === departureCoachType))
+  }, [departureCoaches, departureCoachType])
+
+useEffect(() => {
+  if (!arrivalCoachType) return
+  setArrivalFilteredCoaches(arrivalCoaches.filter(el => el.coach.class_type === arrivalCoachType))
+  }, [arrivalCoaches, arrivalCoachType])
 
   return (
     <div>
@@ -44,33 +58,38 @@ export const TicketsPage = () => {
       <div className={s.container}>
         <DetailsFilter />
         <div className={s.ticketsBlock}>
-          <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
-          <TicketsQuantity />
-          <CoachTypeSelect routeInfo={currentRoute.departure} direction={'departure'} />
-          {!!departureFilteredCoaches.length && !!departureCoachType && (
-            <CoachSelector coaches={departureFilteredCoaches} direction={'departure'} />
-          )}
-          {!!departureSelectedCoaches.length &&
-            !!departureCoachType &&
-            departureSelectedCoaches.map((coach) => (
-              <Coach coach={coach} key={coach.coach._id} direction={'departure'} />
+          <h1>ВЫБОР МЕСТ</h1>
+          <div className={s.routeBlock}>
+            <div className={s.backButtonBlock}>
+              <button>Выбрать другой поезд</button>
+            </div>
+            <RouteDetails direction={'departure'} routeInfo={currentRoute.departure} />
+            <TicketsQuantity getTicketsQuantity={setDepartureSeats} />
+            <CoachTypeSelect routeInfo={currentRoute.departure} getCoachType={setDepartureCoachType}/>
+            {!!departureFilteredCoaches.length && !!departureCoachType && (
+            <CoachSelector coaches={departureFilteredCoaches} setSelectedCoaches={setDepartureSelectedCoaches} />
+            )}
+            {!!departureSelectedCoaches.length && departureSelectedCoaches.map((coachInfo) => (
+              <Coach coachInfo={coachInfo} key={coachInfo.coach._id} seats={departureSeats} setSeats={setDepartureSeats} />
             ))}
+          </div>
           {currentRoute.arrival && (
-            <>
-              <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
-              <TicketsQuantity />
-              <CoachTypeSelect routeInfo={currentRoute.arrival} direction={'arrival'} />
-            </>
-          )}
-          {!!arrivalFilteredCoaches.length && !!arrivalCoachType && <CoachSelector coaches={arrivalFilteredCoaches} direction={'arrival'} />}
-          {!!arrivalSelectedCoaches.length &&
-            !!arrivalCoachType &&
-            arrivalSelectedCoaches.map((coach) => (
-              <Coach coach={coach} key={coach.coach._id} direction={'arrival'} />
+          <div className={s.routeBlock}>
+            <div className={s.backButtonBlock}>
+              <button>Выбрать другой поезд</button>
+            </div>
+            <RouteDetails direction={'arrival'} routeInfo={currentRoute.arrival} />
+            <TicketsQuantity getTicketsQuantity={setArrivalSeats} />
+            <CoachTypeSelect routeInfo={currentRoute.arrival} getCoachType={setArrivalCoachType}/>
+            {!!arrivalFilteredCoaches.length && !!arrivalCoachType && (
+            <CoachSelector coaches={arrivalFilteredCoaches} setSelectedCoaches={setArrivalSelectedCoaches} />
+            )}
+            {!!arrivalSelectedCoaches.length && arrivalSelectedCoaches.map((coachInfo) => (
+              <Coach coachInfo={coachInfo} key={coachInfo.coach._id} seats={arrivalSeats} setSeats={setArrivalSeats} />
             ))}
-          <button className={s['ticketsFull-button']} onClick={getTransition}>
-            Далее
-          </button>
+          </div>
+          )}
+          <button className={s['ticketsFull-button']} onClick={getTransition}>Далее</button>
         </div>
       </div>
     </div>

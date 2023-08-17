@@ -39,21 +39,7 @@ const initialState = {
   },
   currentRoute: {},
   departureCoaches: [],
-  departureCoachType: '',
-  departureFilteredCoaches: [],
-  departureSelectedCoaches: [],
-  departure: {
-    route_direction_id: '',
-    seats: [],
-  },
   arrivalCoaches: [],
-  arrivalCoachType: '',
-  arrivalFilteredCoaches: [],
-  arrivalSelectedCoaches: [],
-  arrival: {
-    route_direction_id: '',
-    seats: [],
-  },
 };
 
 // actions ----------------------------------------------------
@@ -110,44 +96,6 @@ const trains = createSlice({
     selectRoute(state, action) {
       state.currentRoute = action.payload;
     },
-    setCoachType(state, { payload }) {
-      state[`${payload.direction}SelectedCoaches`] = [];
-      state[`${payload.direction}CoachType`] = payload.type;
-      state[`${payload.direction}FilteredCoaches`] = state[`${payload.direction}Coaches`].filter(
-        ({ coach }) => {
-          return payload.type.includes(coach.class_type);
-        }
-      );
-    },
-    setSelectedCoaches(state, { payload }) {
-      if (
-        state[`${payload.direction}SelectedCoaches`].find(
-          (el) => el?.coach?._id === payload.coach.coach._id
-        )
-      ) {
-        state[`${payload.direction}SelectedCoaches`] = state[`${payload.direction}SelectedCoaches`].filter((el) => el?.coach?._id !== payload.coach.coach._id);
-      } else {
-        state[`${payload.direction}SelectedCoaches`] = [...state[`${payload.direction}SelectedCoaches`], payload.coach];
-      }
-    },
-    setSelectedSeat(state, {payload}) {
-      if (state[payload.direction].seats.find(seat => seat.coach_id === payload.seat.coach_id && seat.seat_number === payload.seat.seat_number)) {
-        state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.seat_number !== payload.seat.seat_number || seat.coach_id !== payload.seat.coach_id)
-      } else {
-        state[payload.direction].seats.push(payload.seat)
-      }
-    },
-    resetSelectedSeats(state, {payload}){
-      state[payload.direction].seats = state[payload.direction].seats.filter(seat => seat.coach_id !== payload.coach_id)
-    },
-    resetCoachType(state, action) {
-      state.departureCoaches = [];
-      state.departureCoachType = '';
-      state.departureFilteredCoaches = [];
-      state.arrivalCoaches = [];
-      state.arrivalCoachType = '';
-      state.arrivalFilteredCoaches = [];
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(getTrains.fulfilled, (state, action) => {
@@ -179,6 +127,7 @@ export const {
   setCoachType,
   resetCoachType,
   setSelectedCoaches,
+  setSeatsQuantity,
   setSelectedSeat,
   resetSelectedSeats,
 } = trains.actions;
