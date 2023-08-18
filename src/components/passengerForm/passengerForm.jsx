@@ -2,10 +2,9 @@ import React, { useState, useId } from 'react';
 import { useForm } from 'react-hook-form';
 import s from './passengerForm.module.css';
 
-export const PassengerForm = ({ test, index }) => {
-  const [age, setAge] = useState('Взрослый');
+export const PassengerForm = ({ test, index, info }) => {
+  const [age, setAge] = useState(info.is_adult);
   const [checked, setChecked] = useState(false);
-  const [isToggle, setIsToggle] = useState(false);
   const { register, handleSubmit } = useForm({ mode: 'onBlur' });
 
   const mobility = useId();
@@ -15,7 +14,14 @@ export const PassengerForm = ({ test, index }) => {
   const isChecked = checked ? 'passenger-type-checked' : 'passenger-type-check';
 
   const onSubmit = (data) => {
-    test(data, index);
+    const doc_number =
+      data.is_adult === 'true'
+        ? `${data.doc_number_serias} ${data.doc_number}`
+        : data.doc_number;
+
+    const dataInfo = { ...data, doc_number };
+    delete dataInfo.doc_number_serias;
+    test(dataInfo, index);
   };
 
   return (
@@ -23,15 +29,16 @@ export const PassengerForm = ({ test, index }) => {
       <form onBlur={handleSubmit(onSubmit)}>
         <div>
           <select
-            name=''
             id=''
             className={s.selectAge}
             onChange={(e) => setAge(e.target.value)}
+            defaultValue={age}
+            {...register('is_adult')}
           >
-            <option className={s['selectAge-item']} value='Взрослый'>
+            <option className={s['selectAge-item']} value={true}>
               Взрослый
             </option>
-            <option className={s['selectAge-item']} value='Детский'>
+            <option className={s['selectAge-item']} value={false}>
               Детский
             </option>
           </select>
@@ -92,22 +99,22 @@ export const PassengerForm = ({ test, index }) => {
                 <div className={s['form_toggle-item-1']}>
                   <input
                     type='radio'
-                    name='radio'
-                    value='M'
+                    name='gender'
+                    value='true'
                     defaultChecked
-                    onChange={() => setIsToggle(!isToggle)}
                     id={genderM}
+                    {...register('gender')}
                   />
                   <label htmlFor={genderM}>М</label>
                 </div>
                 <div className={s['form_toggle-item-2']}>
                   <input
                     type='radio'
-                    name='radio'
-                    value='Ж'
-                    onChange={() => setIsToggle(!isToggle)}
+                    name='gender'
+                    value='false'
                     className={s['form_toggle-item-2']}
                     id={genderG}
+                    {...register('gender')}
                   />
                   <label htmlFor={genderG}>Ж</label>
                 </div>
@@ -122,7 +129,7 @@ export const PassengerForm = ({ test, index }) => {
                 Дата рождения
               </label>
               <input
-                type='text'
+                type='date'
                 name='birthday'
                 id='dateBirthday'
                 required
@@ -137,7 +144,6 @@ export const PassengerForm = ({ test, index }) => {
               className={s[`${isChecked}`]}
               type='checkbox'
               name='limited_mobility'
-              value='Ограниченная подвижность'
               {...register('limited_mobility')}
               onChange={() => setChecked(!checked)}
               id={mobility}
@@ -147,14 +153,12 @@ export const PassengerForm = ({ test, index }) => {
             </label>
           </div>
         </div>
-        {age === 'Взрослый' ? (
+        {age ? (
           <div className={s['personal-form-group']}>
             <div className={s['personal-form-group-item']}>
               <p className={s['type-docum']}>Тип документа</p>
-              <select name='' id='' className={s['select-docum']}>
-                <option value='Взрослый' selected>
-                  Паспорт РФ
-                </option>
+              <select id='' className={s['select-docum']} defaultValue={age}>
+                <option value='Взрослый'>Паспорт РФ</option>
                 <option value='Детский'>Свидетельство о рождении</option>
               </select>
             </div>
@@ -167,11 +171,10 @@ export const PassengerForm = ({ test, index }) => {
               </label>
               <input
                 type='text'
-                name='doc_number'
                 id='doc_number'
                 required
                 className={s['personal-form-group-item-input']}
-                {...register('doc_number')}
+                {...register('doc_number_serias')}
               />
             </div>
             <div className={s['personal-form-group-item']}>
@@ -183,7 +186,6 @@ export const PassengerForm = ({ test, index }) => {
               </label>
               <input
                 type='text'
-                name='doc_number'
                 id='doc_number'
                 required
                 className={s['personal-form-group-item-input']}
@@ -195,11 +197,14 @@ export const PassengerForm = ({ test, index }) => {
           <div className={s['personal-form-group-child']}>
             <div className={s['personal-form-group-item']}>
               <p className={s['type-docum']}>Тип документа</p>
-              <select name='' id='' className={s['selectAge-child']}>
+              <select
+                name=''
+                id=''
+                className={s['selectAge-child']}
+                defaultValue={age}
+              >
                 <option value='Взрослый'>Паспорт РФ</option>
-                <option value='Детский' selected>
-                  Свидетельство о рождении
-                </option>
+                <option value='Детский'>Свидетельство о рождении</option>
               </select>
             </div>
             <div className={s['personal-form-group-item-child']}>

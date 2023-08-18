@@ -40,34 +40,6 @@
   padding: 44px 465px 76px 33px;
 }
 
-.block-content-main-passenger {
-  padding: 30px;
-  border-top: 1px solid #e5e5e5;
-  display: flex;
-}
-
-.block-content-main-passenger-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 32px;
-}
-
-.block-content-main-passenger-header p {
-  margin-top: 17px;
-  color: #292929;
-  font-family: Roboto;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.block-content-footer {
-  display: flex;
-  align-items: flex-end;
-}
-
 .footer-button-new {
   width: 233px;
   height: 39px;
@@ -81,6 +53,7 @@
   font-weight: 700;
   line-height: normal;
   margin: 18px 20px 23px 35px;
+  cursor: pointer;
 }
 
 .footer-button-new:hover {
@@ -114,6 +87,7 @@
   margin-bottom: 181px;
   margin-left: 630px;
   margin-right: 0;
+   cursor: pointer;
 }
 
 .orderInfo-button:hover {
