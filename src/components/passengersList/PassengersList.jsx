@@ -49,7 +49,6 @@ export const PassengersList = () => {
     navigate('/payment');
   };
   const test = (data, i) => {
-    console.log(data);
     dispatch(setPersonInfo({ data, i }));
   };
 
