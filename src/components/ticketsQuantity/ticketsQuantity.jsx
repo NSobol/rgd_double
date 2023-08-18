@@ -49,6 +49,7 @@ export const TicketsQuantity = ({ getTicketsQuantity }) => {
         seat_number: 0,
         is_child: ageGroup === 'child',
         include_children_seat: ageGroup === 'adultWithChild',
+        price: 0,
       });
     }
     return seats;
