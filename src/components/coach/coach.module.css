@@ -1,7 +1,8 @@
 .info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  align-items: start;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
 }
 
 .coachNumberContainer {
@@ -9,6 +10,7 @@
   flex-direction: column;
   background-color: #ffd98f;
   padding: 30px 60px 50px 30px;
+  width: 100%;
 }
 
 .coachNumberBig {

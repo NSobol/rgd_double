@@ -26,7 +26,6 @@ export const CoachScheme = ({ coachInfo, seats, setSeats }) => {
       case 'fourth':
         filledSeatsArray = fillSeatsArray(coachInfo.seats, 62);
         break;
-
       default:
         console.error('Ошибка при отрисовке схемы рассадки пассажиров');
         break;
@@ -37,7 +36,7 @@ export const CoachScheme = ({ coachInfo, seats, setSeats }) => {
         key={`${coachInfo.coach.name}seat${i}`}
         seats={seats}
         setSeats={setSeats}
-        coachId={coachInfo.coach._id}
+        coachInfo={coachInfo}
       />
     ));
   };
