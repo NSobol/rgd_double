@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ReactComponent as There } from './../../images/There.svg';
 import { ReactComponent as Back } from './../../images/Back.svg';
 import { ReactComponent as Plus } from './../../images/plus.svg';
 import { ReactComponent as Minus } from './../../images/minus.svg';
 import { ReactComponent as User } from './../../images/user.svg';
 import { ReactComponent as ArrowR } from '../../images/ArrowR.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import s from './detailsTrip.module.css';
 import dayjs from 'dayjs';
-import { setOrderPrice } from '../../storage/slices/orderSlice';
+// import { setOrderPrice } from '../../storage/slices/orderSlice';
 const duration = require('dayjs/plugin/duration');
 dayjs.extend(duration);
 
 export const DetailsTrip = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
   const [opened, setOpened] = useState(false);
   const [show, setShow] = useState(false);
