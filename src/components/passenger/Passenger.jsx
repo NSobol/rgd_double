@@ -10,8 +10,6 @@ export const Passenger = ({ index, id, test, item }) => {
   const isTitleActive = opened ? 'active' : 'accordionTitle';
   const isActive = opened ? 'content show' : 'content';
 
-  console.log(item);
-
   return (
     <div id={id} className={s.accordionItem}>
       <div className={s[`${isTitleActive}`]} onClick={() => setOpened(!opened)}>
@@ -24,7 +22,7 @@ export const Passenger = ({ index, id, test, item }) => {
         )}
       </div>
       <div className={s[`${isActive}`]}>
-        <PassengerForm test={test} info={item.person_info} />
+        <PassengerForm test={test} info={item.person_info} index={index} />
       </div>
     </div>
   );

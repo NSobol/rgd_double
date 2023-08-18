@@ -15,7 +15,6 @@ export const PassengerForm = ({ test, index }) => {
   const isChecked = checked ? 'passenger-type-checked' : 'passenger-type-check';
 
   const onSubmit = (data) => {
-    console.log(data);
     test(data, index);
   };
 
