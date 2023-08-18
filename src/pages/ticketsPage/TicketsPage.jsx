@@ -27,14 +27,25 @@ export const TicketsPage = () => {
   const [arrivalFilteredCoaches, setArrivalFilteredCoaches] = useState([]);
   const [arrivalSelectedCoaches, setArrivalSelectedCoaches] = useState([]);
 
-console.log('departureSeats', departureSeats);
-
 const getTransition = () => {
-  if((departureSeats.find(el => el.coach_id === '' || el.seat_number === 0)) || arrivalSeats.find(el => el.coach_id === '' || el.seat_number === 0)) {
-    alert('Количество билетов превышает количество выбранных мест')
+  if(currentRoute.arrival) {
+    if (!arrivalSeats.length || !departureSeats.length) {
+      alert('Выберите количество билетов и места')
+    } else if ((arrivalSeats.find(el => el.coach_id === '' || el.seat_number === 0) || departureSeats.find(el => el.coach_id === '' || el.seat_number === 0))) {
+      alert('Выберите места')
+    } else {
+      dispatch(setSeatsInfo({currentRoute, departureSeats, arrivalSeats}))
+      navigate('/stepthree');
+    }
   } else {
-    dispatch(setSeatsInfo({currentRoute, departureSeats, arrivalSeats}))
-    navigate('/stepthree');
+    if (!departureSeats.length) {
+      alert('Выберите количество билетов и места')
+    } else if (departureSeats.find(el => el.coach_id === '' || el.seat_number === 0)) {
+      alert('Выберите места')
+    } else {
+      dispatch(setSeatsInfo({currentRoute, departureSeats, arrivalSeats}))
+      navigate('/stepthree');
+    }
   }
 };
 
