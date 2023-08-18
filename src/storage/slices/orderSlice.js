@@ -40,8 +40,11 @@ const order = createSlice({
         state.arrival.seats = payload.arrivalSeats
       }
     },
+    setPersonInfo(state, {payload}) { 
+      state.departure.seats[payload.i].person_info = payload.data; 
+    }
   },
 });
 
-export const { setUser, setOrderNumber, setSeatsInfo } = order.actions;
+export const { setUser, setOrderNumber, setSeatsInfo, setPersonInfo } = order.actions;
 export default order.reducer;

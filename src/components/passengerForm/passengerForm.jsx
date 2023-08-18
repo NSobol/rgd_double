@@ -2,7 +2,7 @@ import React, { useState, useId } from 'react';
 import { useForm } from 'react-hook-form';
 import s from './passengerForm.module.css';
 
-export const PassengerForm = ({ test, info }) => {
+export const PassengerForm = ({ test, index }) => {
   const [age, setAge] = useState('Взрослый');
   const [checked, setChecked] = useState(false);
   const [isToggle, setIsToggle] = useState(false);
@@ -16,9 +16,8 @@ export const PassengerForm = ({ test, info }) => {
 
   const onSubmit = (data) => {
     console.log(data);
+    test(data, index);
   };
-
-  console.log(info);
 
   return (
     <div>

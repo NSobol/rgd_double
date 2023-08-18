@@ -2,7 +2,8 @@ import React from 'react';
 import s from './passengersList.module.css';
 import { Passenger } from '../passenger/Passenger';
 import { useNavigate } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPersonInfo } from './../../storage/slices/orderSlice';
 
 export const PassengersList = () => {
   // const tickets = [
@@ -42,12 +43,14 @@ export const PassengersList = () => {
 
   const tickets = useSelector((s) => s.order.departure.seats);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const getTransition = () => {
     navigate('/payment');
   };
-  const test = (data) => {
+  const test = (data, i) => {
     console.log(data);
+    dispatch(setPersonInfo({ data, i }));
   };
 
   return (
