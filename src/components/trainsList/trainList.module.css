@@ -26,6 +26,22 @@
   margin-right: 48px;
 }
 
+.total-select > select {
+  border: none;
+  color: #292929;
+  font-family: Roboto;
+  font-size: 18px;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.totalSelect {
+  display: flex;
+  gap: 20px;
+}
+
 .total-show {
   color: #928f94;
   font-family: Roboto;
@@ -34,21 +50,28 @@
   font-weight: 400;
   line-height: normal;
 }
-.active {
-  color: #292929;
-  font-family: Roboto;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-right: 10px;
-}
+
 .total {
   color: #928f94;
   font-family: Roboto;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-right: 10px;
+  cursor: pointer;
+  height: 0px;
+}
+
+.total::before {
+  content: attr(data_count);
+}
+
+.total:hover::before {
+  color: #FFCA62;
+}
+
+.total:active::before {
+  font-weight: 700;
+  color: #FFCA62;
+}
+
+.total:checked::before {
+  color: #292929;
 }
