@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as There } from './../../images/There.svg';
 import { ReactComponent as Back } from './../../images/Back.svg';
 import { ReactComponent as Plus } from './../../images/plus.svg';
@@ -14,16 +14,50 @@ import DateInput from '../dateInput/dateInput';
 import { RangeInput } from '../rangeInput/RangeInput';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrains, setFilter } from '../../storage/slices/trainSlice';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const DetailsFilter = () => {
   const dispatch = useDispatch();
+  const [searchParameters, setSearchParameters] = useSearchParams();
+  const [have_second_class, setHave_second_class] = useState(
+    searchParameters.get('have_second_class') === 'true'
+  );
   const { searchParams } = useSelector((s) => s.trains);
   const [isActive, setIsActive] = useState(false);
   const [opened, setOpened] = useState(false);
+  const location = useLocation();
+  console.log('location', location);
 
   const handleFilter = (filter, e) => {
     dispatch(setFilter({ filter, value: e.target.checked }));
     dispatch(getTrains());
+  };
+
+  const resp = (res) => {
+    return res.ok ? res.json() : res.json().then((data) => Promise.reject(data));
+  };
+
+useEffect(() => {
+  fetch(`https://students.netoservices.ru/fe-diplom/routes${location.search}from_city_id=641037eb5c49ea004632ee6e&to_city_id=641037eb5c49ea004632ee72`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(resp).then(res => console.log(res))
+}, [location.search])
+
+  const handlerFilter = (filter, e) => {
+    const params = {};
+    for (const [key, value] of searchParameters.entries()) {
+      params[key] = value;
+    }
+    if (searchParameters.has(filter)) {
+      delete params[filter]
+    } else {
+      params[filter] = 'true';
+    }
+
+    setSearchParameters(params);
   };
 
   return (
@@ -39,6 +73,30 @@ export const DetailsFilter = () => {
         </div>
       </div>
       <div className={s['filters-block']}>
+        <div className={s['filters-block-item']}>
+          <Сompartment className={s['filters-block-item-icon']} />
+          <p className={s['filters-block-item-text']}>have_second_class </p>
+          <label className={s['filters-block-item-label']}>
+            <input
+              type='checkbox'
+              onChange={(e) => handlerFilter('have_second_class', e)}
+              checked={searchParameters.get('have_second_class') === 'true'}
+            />
+            <span className={s['filters-block-item-span']}></span>
+          </label>
+        </div>
+        <div className={s['filters-block-item']}>
+          <Сompartment className={s['filters-block-item-icon']} />
+          <p className={s['filters-block-item-text']}>have_second_class22222 </p>
+          <label className={s['filters-block-item-label']}>
+            <input
+              type='checkbox'
+              onChange={(e) => handlerFilter('have_second_class22222', e)}
+              checked={searchParameters.get('have_second_class22222') === 'true'}
+            />
+            <span className={s['filters-block-item-span']}></span>
+          </label>
+        </div>
         <div className={s['filters-block-item']}>
           <Сompartment className={s['filters-block-item-icon']} />
           <p className={s['filters-block-item-text']}>Купе </p>
