@@ -22,7 +22,11 @@ export const SuccessfulOrderPage = () => {
             <div className={s['fulOrder-header']}>
               <p>№Заказа {orderNumb}</p>
               <p>
-                сумма <span>{orderSum}</span> &#8381;
+                сумма{' '}
+                <span>
+                  {Intl.NumberFormat('ru-RU').format(orderSum)} 
+                </span>{' '}
+                &#8381;
               </p>
             </div>
             <div className={s['fulOrder-main']}>

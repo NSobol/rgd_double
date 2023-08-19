@@ -23,7 +23,7 @@
 
 .block-container-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 
@@ -55,6 +55,18 @@
   padding-left: 25px;
 }
 
+.block-back-date {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: end;
+  padding-bottom: 3px;
+  padding-left: 10px;
+}
+
 .content {
   max-height: 0;
   overflow: hidden;
@@ -67,7 +79,7 @@
   transition: all 0.5s cubic-bezier(1, 0, 1, 0);
 }
 
-.trainInfo{
+.trainInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,60 +87,181 @@
   margin-bottom: 22px;
 }
 
-.trainInfo-text{
-  color: #E5E5E5;
-font-family: Roboto;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.trainInfo-text {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.trainInfo-number{
-  color: #FFF;
+.trainInfo-number {
+  color: #fff;
   font-family: Roboto;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-
 }
 
+.trainInfo-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 46px;
+}
 
+.trainInfo-title {
+  color: #fff;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
 
+.trainInfo-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
 
+.trainInfo-time {
+  color: #fff;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 
+.travelTime {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 7px;
+}
 
+.route-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.trainInfo-date {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
 
+.trainInfo-date-text {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
+.trainInfo-city {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
 
+.trainInfo-city-name {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
 
+.trainInfo-railway {
+  display: flex;
+  justify-content: space-between;
+}
 
+.trainInfo-railway-name {
+  display: flex;
+  flex-direction: column;
+}
 
+.trainInfo-railway-name span {
+  color: #928f94;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
+.trainInfo-railway-name1 {
+  display: flex;
+  justify-content: flex-end;
+}
 
+.contentShow {
+  padding-top: 33px;
+}
+.passengers {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
+.passengers:first-child {
+  margin-bottom: 23px;
+}
 
+.passengers-count {
+  color: #e5e5e5;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
-
-
-
-
-
-
-
-
+.passengers-price {
+  color: #fff;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.passengers-price-val {
+  color: #928f94;
+  text-align: right;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: baseline;
   padding: 30px 28px;
   border-top: 1px solid #e5e5e5;
 }
 
-.footer > p {
+.result {
   color: #fff;
   font-family: Roboto;
   font-size: 30px;
@@ -138,11 +271,18 @@ line-height: normal;
   text-transform: uppercase;
 }
 
-.footer > span {
+.passengers-price-currency-number {
   color: #ffa800;
   font-family: Roboto;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.passengers-price-currency {
+  color: #e5e5e5;
+  font-size: 44px;
+  font-weight: 400;
+  font-family: Roboto;
 }

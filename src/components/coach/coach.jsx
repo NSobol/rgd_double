@@ -31,54 +31,64 @@ export const Coach = ({ coachInfo, seats, setSeats }) => {
     <div>
       <div className={s['info']}>
         <div className={s['coachNumberContainer']}>
-          <span className={s['coachNumberBig']}>{coachInfo.coach._id.slice(-4)}</span>
+          <span className={s['coachNumberBig']}>
+            {coachInfo.coach._id.slice(-4)}
+          </span>
           <span className={s['coachNumberText']}>вагон</span>
         </div>
         <div className={s['seatsQuantityContainer']}>
           <div>
             <span className={s['blockSubtitle']}>Места </span>
-            <span className={s['seatsQuantitySmall']}>{availableSeats.seats}</span>
+            <span className={s['seatsQuantitySmall']}>
+              {availableSeats.seats}
+            </span>
           </div>
-          {coachInfo.coach.class_type === 'second' ||
-            (coachInfo.coach.class_type === 'third' && (
-              <>
-                <div>
-                  <span className={s['blockText']}>Верхние </span>
-                  <span className={s['seatsQuantityBig']}>{availableSeats.topSeats}</span>
-                </div>
-                <div>
-                  <span className={s['blockText']}>Нижние </span>
-                  <span className={s['seatsQuantityBig']}>{availableSeats.bottomSeats}</span>
-                </div>
-              </>
-            ))}
+          {(coachInfo.coach.class_type === 'second' ||
+            coachInfo.coach.class_type === 'third') && (
+            <>
+              <div>
+                <span className={s['blockText']}>Верхние </span>
+                <span className={s['seatsQuantityBig']}>
+                  {availableSeats.topSeats}
+                </span>
+              </div>
+              <div>
+                <span className={s['blockText']}>Нижние </span>
+                <span className={s['seatsQuantityBig']}>
+                  {availableSeats.bottomSeats}
+                </span>
+              </div>
+            </>
+          )}
         </div>
         <div className={s['priceSeatsContainer']}>
           <span className={s['blockSubtitle']}>Стоимость</span>
-          {(coachInfo.coach.class_type === 'first' ||
-            coachInfo.coach.class_type === 'fourth') ? (
+          {coachInfo.coach.class_type === 'first' ||
+          coachInfo.coach.class_type === 'fourth' ? (
+            <div>
+              <span className={s['priceSeats']}>
+                {Intl.NumberFormat('ru-RU').format(coachInfo.coach.top_price)}{' '}
+              </span>
+              <span className={s['currency']}>₽</span>
+            </div>
+          ) : (
+            <>
               <div>
                 <span className={s['priceSeats']}>
                   {Intl.NumberFormat('ru-RU').format(coachInfo.coach.top_price)}{' '}
                 </span>
                 <span className={s['currency']}>₽</span>
               </div>
-            ) : (
-              <>
-                <div>
-                  <span className={s['priceSeats']}>
-                    {Intl.NumberFormat('ru-RU').format(coachInfo.coach.top_price)}{' '}
-                  </span>
-                  <span className={s['currency']}>₽</span>
-                </div>
-                <div>
-                  <span className={s['priceSeats']}>
-                    {Intl.NumberFormat('ru-RU').format(coachInfo.coach.bottom_price)}{' '}
-                  </span>
-                  <span className={s['currency']}>₽</span>
-                </div>
-              </>
-            )}
+              <div>
+                <span className={s['priceSeats']}>
+                  {Intl.NumberFormat('ru-RU').format(
+                    coachInfo.coach.bottom_price
+                  )}{' '}
+                </span>
+                <span className={s['currency']}>₽</span>
+              </div>
+            </>
+          )}
         </div>
         <div className={s['optionsContainer']}>
           <span className={s['blockSubtitle']}>Обслуживание ФПК</span>
