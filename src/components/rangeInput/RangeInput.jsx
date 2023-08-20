@@ -1,17 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrains, setFilter } from '../../storage/slices/trainSlice';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 function valuetext(value) {
   return `${value}`;
 }
 
-export const RangeInput = ({ min, max, filterMin, filterMax }) => {
+export const RangeInput = memo(({ min, max, filterMin, filterMax }) => {
   const dispatch = useDispatch();
   const { searchParams } = useSelector((s) => s.trains);
-  const [value, setValue] = useState([searchParams[filterMin], searchParams[filterMax]]);
+  const [searchParameters, setSearchParameters] = useSearchParams();
+
+  const [value, setValue] = useState([
+    searchParameters.get('price_from') || 300,
+    searchParameters.get('price_to') || 7000,
+  ]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const params = {};
+      for (const [key, value1] of searchParameters.entries()) {
+        params[key] = value1;
+      }
+      params['price_from'] = value[0];
+      params['price_to'] = value[1];
+      setSearchParameters(params, {replace: true});
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [dispatch, value, filterMin, filterMax]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -93,4 +111,4 @@ export const RangeInput = ({ min, max, filterMin, filterMax }) => {
       />
     </Box>
   );
-};
+});

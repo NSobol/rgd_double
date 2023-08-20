@@ -14,7 +14,7 @@ export const SearchForm = ({ type = 'search' }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getTrains()).then((res) => {
-      if (res.type.endsWith('fulfilled')) navigate('/stepone');
+      if (res.type.endsWith('fulfilled')) navigate('/stepone?price_from=300&price_to=7000');
     });
   };
 
