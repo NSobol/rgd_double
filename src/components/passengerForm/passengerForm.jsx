@@ -1,8 +1,9 @@
 import React, { useState, useId } from 'react';
 import { useForm } from 'react-hook-form';
 import s from './passengerForm.module.css';
+import { HashLink } from 'react-router-hash-link';
 
-export const PassengerForm = ({ test, index, info }) => {
+export const PassengerForm = ({ test, index, info, isLast }) => {
   const [age, setAge] = useState(info.is_adult);
   const [checked, setChecked] = useState(false);
   const { register, handleSubmit } = useForm({ mode: 'onBlur' });
@@ -227,8 +228,10 @@ export const PassengerForm = ({ test, index, info }) => {
           </div>
         )}
         <div className={s['form-footer']}>
-          <button className={s['form-footer-button']}>
-            Следующий пассажир
+          <button className={s['form-footer-button']} disabled={isLast}>
+            {isLast ? 'Следующий пассажир' : <HashLink smooth to={`/stepthree#pass${index + 2}`}>
+              Следующий пассажир
+            </HashLink>}
           </button>
         </div>
       </form>

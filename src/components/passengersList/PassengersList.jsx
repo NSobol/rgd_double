@@ -6,40 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setPersonInfo } from './../../storage/slices/orderSlice';
 
 export const PassengersList = () => {
-  // const tickets = [
-  //   {
-  //     coach_id: '641037ec5c49ea004632f165',
-  //     person_info: {
-  //       is_adult: true,
-  //       first_name: 'Андрей',
-  //       last_name: 'Каптурин',
-  //       patronymic: 'Алексеевич',
-  //       gender: true,
-  //       birthday: 'string',
-  //       document_type: 'string',
-  //       document_data: 'string',
-  //     },
-  //     seat_number: 23,
-  //     is_child: false,
-  //     include_children_seat: true,
-  //   },
-  //   {
-  //     coach_id: '641037ec5c49ea004632f165',
-  //     person_info: {
-  //       is_adult: false,
-  //       first_name: 'Андрей',
-  //       last_name: 'Каптурин',
-  //       patronymic: 'Алексеевич',
-  //       gender: true,
-  //       birthday: 'string',
-  //       document_type: 'string',
-  //       document_data: 'string',
-  //     },
-  //     seat_number: 22,
-  //     is_child: true,
-  //     include_children_seat: false,
-  //   },
-  // ];
 
   const tickets = useSelector((s) => s.order.departure.seats);
   const navigate = useNavigate();
@@ -60,8 +26,9 @@ export const PassengersList = () => {
             key={i}
             index={i}
             item={item}
-            id={`pass${i}`}
+            id={`pass${i + 1}`}
             test={test}
+            isLast={i === tickets.length - 1}
           />
         ))}
       </div>
