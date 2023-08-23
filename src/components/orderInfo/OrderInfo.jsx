@@ -14,7 +14,6 @@ export const OrderInfo = () => {
   const dispatch = useDispatch();
   const currentRoute = useSelector((s) => s.trains.currentRoute);
   const order = useSelector((s) => s.order);
-  console.log(order);
   const payment = order.user.payment_method;
   const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);

@@ -25,8 +25,6 @@ export const DetailsTrip = () => {
   const details = useSelector((s) => s.trains.currentRoute);
   const detailsPass = useSelector((s) => s.order);
   const detailsPassArrival = detailsPass?.arrival ? detailsPass.arrival : 0;
-    console.log(detailsPass);
-  console.log(detailsPassArrival);
 
   const getDateStr = (datetime) => {
     const year = datetime.getFullYear();

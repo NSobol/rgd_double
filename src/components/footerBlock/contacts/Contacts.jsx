@@ -23,7 +23,6 @@ export const Contacts = () => {
       setActive(true);
       reset();
     } catch (error) {
-      console.log(error);
       reset();
     }
   };

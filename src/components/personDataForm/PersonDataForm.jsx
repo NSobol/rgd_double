@@ -11,7 +11,6 @@ export const PersonDataForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(setUser(data));
     navigate('/confirm');
   };

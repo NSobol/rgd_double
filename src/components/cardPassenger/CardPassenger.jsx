@@ -3,11 +3,9 @@ import { ReactComponent as Pass } from './../../images/passenger.svg';
 import s from './cardPassenger.module.css';
 
 export const CardPassenger = ({ item }) => {
-  console.log(item);
 	const date = item.birthday;
 	const arrDate = date.split('-');
   const personDate = `${arrDate[2]}.${arrDate[1]}.${arrDate[0]}`;
-
 
   return (
     <div className={s['block-content-main-passenger']}>

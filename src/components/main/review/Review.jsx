@@ -2,7 +2,6 @@ import React from 'react';
 import s from './review.module.css';
 
 export const Review = (review) => {
-  console.log(review.avatar)
   return (
     <div className={s['review-container']}>
       <img src={review.avatar} alt='Аватар' className={s['review-avatar']} />
