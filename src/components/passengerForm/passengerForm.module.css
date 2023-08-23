@@ -292,6 +292,11 @@
   cursor: pointer;
 }
 
+.form-footer-button:disabled {
+  cursor: not-allowed;
+  color: #928f94;
+}
+
 .type-docum {
   color: #928f94;
   font-family: Roboto;
